@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>{:sysconf('wap_title')}</title>
+    <meta name="keywords" content="{:sysconf('wap_keywords')}">
+    <meta name="description" content="{:sysconf('wap_description')}">
+
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="no-cache" http-equiv="pragma">
+    <meta content="no-cache" http-equiv="cache-control">
+    <link href="__STATIC__/index_files/cheshangle.css" rel="stylesheet" type="text/css">
+    <link href="__STATIC__/index_files/cheoo.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+
+    <script src="__STATIC__/index_files/jquery-1.8.3.min.js"></script>
+    <script src="__STATIC__/index_files/cheshangle.js"></script>
+    <script src="__STATIC__/index_files/shencong.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+    {include file="public/baidu_hm" /}
+
+</head>
+
+<body>
+<div class="M_scrollHidden">
+
+    <div class="M_main pt0">
+        <!-- 下载提示 begin -->
+        <!-- 经销商 begin -->
+        <div class="M_main_con M_clearfix">
+
+            <div class="M_distributor">
+
+                <div class="title">
+
+                    <!--<a href="javascript:back();" class="left"><i class="M_icon M_icon_arrow-lw"></i></a>-->
+
+                    <div class="img">
+                        <img src="{:sysconf('company_image')}">
+                    </div>
+
+                    <h1>{:sysconf('company_name')}<i class="M_icon M_icon_zhan M_ml5"></i></h1>
+
+                    <p>
+                        <a href="https://apis.map.qq.com/uri/v1/search?keyword=龙岗区宝南路9号101室&region=深圳&referer=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77"><i
+                                class="M_icon M_icon_location-b"></i>{:sysconf('company_address')}</a></p>
+
+                    <a href="javascript:showPhone(111564);" id="dealer_index_button" class="M_btn M_btn_blue M_br3"><i
+                            class="M_icon M_icon_tel-w M_mr5"></i>销售热线</a>
+
+                </div>
+
+                <div class="menu">
+
+                    <ul>
+
+                        <li class="current"><a href="{:url('wap/index/index')}">首页</a></li>
+
+                        <li class=""><a href="/index.php/wap/index/get_list">全部车型</a></li>
+
+                        <li class=""><a href="/index.php/wap/index/has_sale">已售 {$has_sale}</a></li>
+
+                        <li class=""><a href="{:url('wap/index/about')}">关于我们</a></li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- 电话弹层 begin -->
+        <div class="M_pop_tel" id="">
+
+            <ul class="list M_br12">
+
+            </ul>
+
+            <a href="javascript:hidePhone();" class="close M_br12">取消</a>
+
+        </div>
+
+        <div class="M_pop-bg"></div>
+
+        <div class="M_main_con">
+            <h2>交车照片</h2>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    {foreach $jiaoche as $key=>$vo}
+                    <div class="swiper-slide image-click" data-brand_name="{$vo.brand_name}"
+                         data-car_model="{$vo.car_model}" data-car_color="{$vo.car_color}"
+                         data-create_at="{$vo.create_at}"
+                         style="background: url('{$vo.ahead_image}') center center;background-size: cover;border-radius: 10px;">
+                    </div>
+                    {/foreach}
+                </div>
+                <!-- Add Pagination -->
+                <!--<div class="swiper-pagination"></div>-->
+            </div>
+        </div>
+
+
+        <!-- 车型报价 begin -->
+        <div class="M_main_con">
+            <h2>车型介绍</h2>
+            <ul class="M_choice M_series M_clearfix">
+                {foreach $list as $key=>$vo}
+                <li>
+                    <a href="/index.php/wap/index/info?id={$vo.id}">
+                        <div class="img"><img src="{$vo.goods_logo}"></div>
+                        <div class="title" style="overflow:hidden;">
+                            <span style="display: block;width: 100%;float: left;font-size: 18px;font-weight: normal;line-height: 1.8rem">{$vo.goods_title}</span>
+                            <span class="price" style="text-align: left">
+                                {foreach $vo.goods_tag as $tag}
+                                    {if $tag neq ''}<em class="M_br3">{$tag}</em>{/if}
+                                {/foreach}
+                            </span>
+                            <span class="price" style="text-align: left;padding: 5px 0px;">{$vo.goods_prices} 万起<em
+                                    style="margin-left: 10px;color: #c3c3c3;text-decoration:line-through;font-size: 14px">{$vo.guid_price} 万</em></span>
+                        </div>
+                        <div class="title" style="overflow:hidden;"><span class="bg_blue">现车</span><span
+                                class="bg_blue">分期</span><span class="bg_blue">一次性</span></div>
+                    </a>
+                </li>
+                {/foreach}
+            </ul>
+
+            <div class="M_plrb12">
+                <a href="/index.php/wap/index/get_list" class="M_btn_yellow M_btn-all M_br3 M_mt12">更多车型介绍</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Swiper -->
+<div class="swiper-container2" id="origin-img">
+    <div class="swiper-wrapper">
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="upload">
+        <p id="brandName">品牌：{$jiaoche[0]['brand_name']}</p>
+        <p id="carModel">车型：{$jiaoche[0]['car_model']}</p>
+        <p id="carColor">颜色：{$jiaoche[0]['car_color']}</p>
+        <p id="createAt">交车日期:{$jiaoche[0]['create_at']}</p>
+    </div>
+</div>
+
+<script src="__STATIC__/index_files/jquery-1.8.3.min.js"></script>
+<script src="__STATIC__/index_files/shencong.js"></script>
+{include file="public/weixin_share" /}
+<style>
+    .swiper-container {
+        width: 100%;
+        height: 100px;
+        padding: 12px 0;
+        background-color: #fff;
+    }
+
+    .swiper-container .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        width: 140px !important;
+    }
+
+    .swiper-container .swiper-slide img {
+        width: 100%;
+        height: 80px;
+        border-radius: 10px;
+    }
+
+    .swiper-container2 {
+        z-index: 999;
+    }
+
+    #top {
+        width: 100%;
+    }
+
+    #comment-list {
+        margin: 1em 0;
+    }
+
+    #comment-list li {
+        display: flex;
+        margin-top: 1.3em;
+    }
+
+    .face {
+        width: 12%;
+        margin: 0 2% 0 4%;
+    }
+
+    .face img {
+        width: 100%;
+    }
+
+    .guest {
+        width: 82%;
+        border-bottom: 1px solid #dbdbdb;
+    }
+
+    .name {
+        display: inline-block;
+        font-size: 1.2em;
+        font-weight: 500;
+    }
+
+    .level {
+        margin-left: 0.5em;
+    }
+
+    .level img {
+        display: inline;
+        width: 0.8em;
+    }
+
+    .date {
+        float: right;
+        margin-right: 3%;
+        color: #999;
+    }
+
+    .star {
+        margin-top: 0.7em;
+    }
+
+    .star img {
+        width: 23%;
+    }
+
+    .detail {
+        margin-top: 0.3em;
+    }
+
+    .thumb {
+        margin: 1em 0;
+    }
+
+    .thumb img {
+        width: 23%;
+        margin-right: 0.5%;
+        display: inline-block;
+    }
+
+    #origin-img {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000;
+    }
+
+    #origin-img .swiper-slide img {
+        width: 100%;
+        vertical-align: middle;
+    }
+
+    .swiper-container2 .swiper-pagination {
+        top: 1em;
+        bottom: auto;
+        color: #fff;
+    }
+
+    .upload {
+        position: absolute;
+        bottom: 0;
+        line-height: 1.6rem;
+        background: rgba(0, 0, 0, .5);
+        z-index: 5;
+        color: #fff;
+        text-indent: 1em;
+        width: 100%;
+    }
+</style>
+<script>
+    var images = {$images | raw
+    }
+    ;
+    var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 2,
+        spaceBetween: 30,
+        speed: 300
+    });
+
+    var swiper2 = new Swiper('.swiper-container2', {
+        zoom: true,
+        width: window.innerWidth,
+        virtual: true,
+        spaceBetween: 20,
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'fraction',
+            renderFraction: function (currentClass, totalClass) {
+                return '<span class="' + currentClass + '"></span>' +
+                    ' of ' +
+                    '<span class="' + totalClass + '"></span>';
+            },
+        },
+        on: {
+            click: function () {
+                $('#origin-img').fadeOut('fast');
+                this.virtual.slides.length = 0;
+                this.virtual.cache = [];
+                swiperStatus = false;
+
+            },
+        },
+    });
+
+    $('.swiper-container .image-click').click(function () {
+        clickIndex = $(this).index();
+
+        var brand_name = $(this).data("brand_name");
+        var car_model = $(this).data("car_model");
+        var car_color = $(this).data("car_color");
+        var create_at = $(this).data("create_at");
+        $("#brandName").text("品牌：" + brand_name);
+        $("#carModel").text("车型：" + car_model);
+        $("#carColor").text("颜色：" + car_color);
+        $("#createAt").text("交车日期：" + create_at);
+
+        var imgs_list = images[clickIndex];
+        for (i = 0; i < imgs_list.length; i++) {
+            swiper2.virtual.appendSlide('<div class="swiper-zoom-container"><img src="' + imgs_list[i] + '" /></div>');
+        }
+        swiper2.slideTo(0);
+        $('#origin-img').fadeIn('fast');
+        swiperStatus = true;
+
+    })
+</script>
+</body>
+</html>

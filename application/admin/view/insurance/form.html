@@ -1,0 +1,87 @@
+{extend name='admin@public/content'}
+
+{block name="content"}
+<style>
+    .layui-select{display: none !important;}
+</style>
+<form onsubmit="return false;" action="{:request()->url()}" data-auto="true" method="post" class='form-horizontal layui-form padding-top-20'>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">保险名称</label>
+        <div class='col-sm-8'>
+            <input autofocus name="name" value='{$vo.name|default=""}' required="required" title="请输入保险名称" placeholder="请输入保险名称" class="layui-input">
+        </div>
+    </div>
+
+    <!--<div class="form-group">-->
+        <!--<label class="col-sm-2 control-label">类型</label>-->
+        <!--<div class="col-sm-8">-->
+            <!--<select style="display: block;" class="layui-select full-width" name="type">-->
+                <!--<option selected value="0">商业险</option>-->
+                <!--<option selected value="1">交强险</option>-->
+                <!--<option selected value="2">质保</option>-->
+                <!--<option selected value="3">店保</option>-->
+            <!--</select>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="form-group">-->
+        <!--<label class="col-sm-2 control-label">项目内容</label>-->
+        <!--<div class='col-sm-8'>-->
+            <!--<input autofocus name="content" value='{$vo.content|default=""}' required="required" title="请输入项目内容" placeholder="请输入项目内容" class="layui-input">-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="form-group">-->
+        <!--<label class="col-sm-2 control-label">年限</label>-->
+        <!--<div class='col-sm-8'>-->
+            <!--<input autofocus name="ps" value='{$vo.ps|default=""}' required="required" title="请输年限" placeholder="请输年限" class="layui-input">-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="form-group">-->
+        <!--<label class="col-sm-2 control-label">市场价</label>-->
+        <!--<div class='col-sm-8'>-->
+            <!--<input autofocus name="market_price" value='{$vo.market_price|default=""}' required="required" title="请输市场价" placeholder="请输市场价" class="layui-input">-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="form-group">-->
+        <!--<label class="col-sm-2 control-label">结算价格</label>-->
+        <!--<div class='col-sm-8'>-->
+            <!--<input autofocus name="price" value='{$vo.price|default=""}' required="required" title="请输结算价格" placeholder="请输结算价格" class="layui-input">-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="form-group">-->
+        <!--<label class="col-sm-2 control-label">成本价</label>-->
+        <!--<div class='col-sm-8'>-->
+            <!--<input autofocus name="cost" value='{$vo.cost|default=""}' required="required" title="请输成本价" placeholder="请输成本价" class="layui-input">-->
+        <!--</div>-->
+    <!--</div>-->
+
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="col-sm-7 col-sm-offset-2">
+        <div class="layui-form-item text-center">
+            {if !empty($vo.id)}<input type="hidden" name="id" value="{$vo.id}">{/if}
+            <button class="layui-btn" type="submit">保存配置</button>
+            <button class="layui-btn layui-btn-danger" type='button' onclick="window.history.back()">取消编辑</button>
+        </div>
+    </div>
+
+    <script>window.form.render();</script>
+
+    <style>
+        .background-item {
+            padding: 15px;
+            background: #efefef;
+        }
+
+        .background-item thead tr {
+            background: #e0e0e0
+        }
+    </style>
+</form>
+{/block}

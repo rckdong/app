@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>【{$vo.goods_title}】-{$vo.goods_prices}万起- {:sysconf('wap_title')}</title>
+    <meta name="keywords" content="{$vo.goods_title},报价,价格">
+    <meta name="description" content="{$vo.goods_title},报价,价格,{:sysconf('wap_description')}">
+
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="no-cache" http-equiv="pragma">
+    <meta content="no-cache" http-equiv="cache-control">
+    <link href="__STATIC__/index_files/cheshangle.css" rel="stylesheet" type="text/css">
+    <link href="__STATIC__/index_files/cheoo.css" rel="stylesheet" type="text/css">
+
+    <script src="__STATIC__/index_files/jquery-1.8.3.min.js"></script>
+    <script src="__STATIC__/index_files/cheshangle.js"></script>
+    <script src="__STATIC__/index_files/shencong.js"></script>
+    {include file="public/baidu_hm" /}
+    <style>
+        .alpha {
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .alpha body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+
+
+<div class="M_scrollHidden">
+
+    <div class="black_mask" style="display:none;" id="zhezhao"></div>
+
+    <!-- 头部 begin -->
+    <!-- 下载提示 begin -->
+    <!-- 头部 begin -->
+    <div class="M-h">
+
+        <header class="M_header M_posf">
+            <a href="javascript:history.back();"  class="left"><i class="M_icon M_icon_arrow-lw"></i></a>
+            <a href="javascript:;" class="right" id="M_more"><i class="M_icon M_icon_nav"></i></a>
+            <a href="javascript:back();" class="title"><i class="M_icon M_icon_logo"></i>报价详情</a>
+        </header>
+
+    </div>
+
+    <!-- 导航 begin -->
+    <div class="M_header_nav" id="M_header_nav">
+
+        <ul>
+            <li><a href="{:url('wap/index/index')}">首页</a></li>
+            <li><a href="/index.php/wap/index/get_list">全部车型</a></li>
+            <li><a href="/index.php/wap/index/has_sale">已售车型</a></li>
+            <li><a href="{:url('wap/index/about')}">关于我们</a></li>
+        </ul>
+    </div>
+    <div class="M_main">
+        <div class="M_main_con pd76">
+
+            <div class="M_price-title M_clearfix">
+
+                <!--<div class="img M_price-imgBox" >-->
+                    <!--<a href="{:url('wap/index/show_pic')}?id={$vo.id}">-->
+                        <!--<img class="img-position" _src="{$vo.goods_logo}" alt="">-->
+                    <!--</a>-->
+                    <!--<span>多张张图</span>-->
+                    <!--<span class="time">{$vo.create_at|time|date="m-d"}</span>-->
+                <!--</div>-->
+
+                <h1 style=" display: block; width: 70%; float: left;padding: 20px 6px 0 12px;">{$vo.goods_title}</h1>
+                <p style="display: block;width: 20%;text-align:right;float: right;padding: 20px 12px 0px 0px;color: #fe4b00;font-size: 16px;"><strong>{$vo.goods_prices} 万起</strong></p>
+
+                <p style="clear: both">
+                    {foreach $vo.goods_tag as $tag}
+                    {if $tag neq ''}<span class="M_br3">{$tag}</span>{/if}
+                    {/foreach}
+                </p>
+
+                <p class="price" style="clear: both;border: none;float: right;padding-top: 0px;margin-top: -30px;">
+                    <em style="color: #a5a5a5;text-decoration:line-through"> {$vo.guid_price}万</em>
+                </p>
+
+            </div>
+
+            {if $vo['goods_desc'] != ''}
+            <div class="M_price-info M_clearfix M_mt12">
+
+                <h2><i></i>配置</h2>
+
+                <p class="tip">
+                    {$vo.goods_desc}
+                </p>
+
+            </div>
+            {/if}
+
+
+            <div class="M_price-zdy M_clearfix M_mt12" >
+                {$vo.goods_content|raw}
+            </div>
+
+            <!--<div class="M_price-bottom2">-->
+                <!--<a href="{:url('wap/index/contact')}?id={$vo.id}" class="M_tel M_btn_yellow M_br3" >咨询底价</a>-->
+            <!--</div>-->
+
+            <div class="M_price-bottom">
+
+                <a href="{:url('wap/index/contact')}?id={$vo.id}" class="M_tel M_btn_yellow M_br3" style="right: 126px;background: #2196f3;border: 1px solid #2196f3;" >
+                    <!--<i class="M_icon M_icon_tel-y M_mr5"></i>-->
+                    询问底价</a>
+
+                <a href="javascript:showPhone(111564);" class="M_tel M_btn_yellow M_br3" id="car_info_button">
+                    <i class="M_icon M_icon_tel-y M_mr5"></i>
+                    立即咨询</a>
+
+                <a href="{:url('wap/index/index')}">
+                    <div class="img"><img src="{:sysconf('company_image')}" alt=""
+                                          style="width: 34px;height: 34px;"></div>
+                    <!--<div class="title">{:sysconf("company_name")}<i class="M_icon M_icon_zhan M_ml5"></i></div>-->
+
+                    <div class="info" style="padding-top: 23px;">进入主页</div>
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <!-- 电话弹层 begin -->
+    <div class="M_pop_tel" id="">
+
+        <ul class="list M_br12">
+
+        </ul>
+
+        <a href="javascript:hidePhone();" class="close M_br12">取消</a>
+
+    </div>
+
+    <div class="M_pop-bg"></div>
+
+
+</div>
+
+
+<script src="__STATIC__/index_files/TouchSlide.1.0.js"></script>
+<script src="__STATIC__/index_files/carPrice.js"></script>
+
+<script type="text/javascript">
+    TouchSlide({
+        slideCell: "#tabBox",
+        endFun: function (i) { //高度自适应
+            var bd = document.getElementById("tabBox-bd");
+            bd.parentNode.style.height = bd.children[i].children[0].offsetHeight + "px";
+            if (i > 0) bd.parentNode.style.transition = "200ms";//添加动画效果
+        }
+    });
+
+    //TouchSlide( {
+    //		slideCell:"#priceBox",
+    //		endFun:function(i){ //高度自适应
+    //			var bd = document.getElementById("priceBox-bd");
+    //			bd.parentNode.style.height = bd.children[i].children[0].offsetHeight+"px";
+    //			if(i>0)bd.parentNode.style.transition="200ms";//添加动画效果
+    //		}
+    //	});
+</script>
+{include file="public/weixin_share" /}
+</body>
+</html>

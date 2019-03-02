@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>车辆状态</title>
+    {include file="public/header" /}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.2/js/swiper.min.js"></script>
+</head>
+
+
+<body>
+
+<script type="text/javascript">!function (a) {
+    function b() {
+        var b = g.getBoundingClientRect().width;
+        b / c > 640 && (b = 640 * c), a.rem = b / 16, g.style.fontSize = a.rem + "px"
+    }
+
+    var c, d, e, f = a.document, g = f.documentElement, h = f.querySelector('meta[name="viewport"]'),
+        i = f.querySelector('meta[name="flexible"]');
+    if (h) {
+        console.warn("将根据已有的meta标签来设置缩放比例");
+        var j = h.getAttribute("content").match(/initial-scale=(["']?)([d.]+)1?/);
+        j && (d = parseFloat(j[2]), c = parseInt(1 / d))
+    } else if (i) {
+        var j = i.getAttribute("content").match(/initial-dpr=(["']?)([d.]+)1?/);
+        j && (c = parseFloat(j[2]), d = parseFloat((1 / c).toFixed(2)))
+    }
+    if (!c && !d) {
+        var k = (a.navigator.appVersion.match(/android/gi), a.navigator.appVersion.match(/iphone/gi)),
+            c = a.devicePixelRatio;
+        c = k ? c >= 3 ? 3 : c >= 2 ? 2 : 1 : 1, d = 1 / c
+    }
+    if (g.setAttribute("data-dpr", c), !h) if (h = f.createElement("meta"), h.setAttribute("name", "viewport"), h.setAttribute("content", "initial-scale=" + d + ", maximum-scale=" + d + ", minimum-scale=" + d + ", user-scalable=no"), g.firstElementChild) g.firstElementChild.appendChild(h); else {
+        var l = f.createElement("div");
+        l.appendChild(h), f.write(l.innerHTML)
+    }
+    a.dpr = c, a.addEventListener("resize", function () {
+        clearTimeout(e), e = setTimeout(b, 300)
+    }, !1), a.addEventListener("pageshow", function (a) {
+        a.persisted && (clearTimeout(e), e = setTimeout(b, 300))
+    }, !1), "complete" === f.readyState ? f.body.style.fontSize = 12 * c + "px" : f.addEventListener("DOMContentLoaded", function () {
+            f.body.setAttribute('fontSize', 12 * c + "px")
+        }, !1), b()
+}(window);
+/*app body*/
+(function (b) {
+    var a = b.body;
+    var e = navigator.userAgent;
+    /in_app_not_header/i.test(e) && (a.className += " app-body-no-header");
+    /in_app_not_footer/i.test(e) && (a.className += " app-body-no-footer");
+
+    function d() {
+        var g = location.search;
+        var f = new Object();
+        if (g.indexOf("?") != -1) {
+            var j = g.substr(1);
+            strs = j.split("&");
+            for (var h = 0; h < strs.length; h++) {
+                f[strs[h].split("=")[0]] = (strs[h].split("=")[1])
+            }
+        }
+        return f
+    }
+
+    var c = d();
+    if (c.APP_NAME && c.APP_NAME == "MLL_ADMIN") {
+        a.className += " app-body-no-toolbar"
+    }
+})(document);</script>
+
+<script type="text/javascript">
+    window._gaq = window._gaq || [];
+    window._ana = window._ana || [];
+    _ana.baseTime = new Date().getTime();
+    window.$$ = window.$$ || {};
+    $$.__IMG = 'http://img002.mllres.com' || 'http://image.meilele.com';
+    window._onReadyList = window._onReadyList || [];
+    window._$_ = function (id) {
+        return document.getElementById(id)
+    };
+</script>
+
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+    <h1 class="mui-title">车辆状态</h1>
+</header>
+
+<style>
+    .no-bottom:after {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 15px;
+        height: 1px;
+        content: '';
+        -webkit-transform: scaleY(.5);
+        transform: scaleY(.5);
+        background-color: #fff !important;
+    }
+</style>
+
+<div class="mui-content" style="max-width: 100%;margin: 0 auto; background: none;">
+
+    <ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
+        <li class="mui-table-view-cell">
+            <div class="mui-table">
+                <div class="mui-table-cell mui-col-xs-2 mui-text-left">
+                    <h4 class="">日期</h4>
+                </div>
+                <div class="mui-table-cell mui-col-xs-10 mui-text-center">
+                    <h4 class="">车辆状态</h4>
+                </div>
+            </div>
+        </li>
+
+        {foreach $list as $key =>$val}
+        {if condition="$val['status'] != 1"}
+        <li class="mui-table-view-cell">
+            <div class="mui-table">
+                <div class="mui-table-cell mui-col-xs-2 mui-text-left">
+                    <span class="mui-h5">{$val['create_at']}</span>
+                </div>
+                <div class="mui-table-cell mui-col-xs-10 mui-text-center">
+                    <span class="mui-h5">{$val.desc|default=''}</span>
+                </div>
+            </div>
+        </li>
+        {else}
+        <li class="mui-table-view-cell no-bottom">
+            <div class="mui-table">
+                <div class="mui-table-cell mui-col-xs-2 mui-text-left">
+                    <span class="mui-h5">{$val['create_at']}</span>
+                </div>
+                <div class="mui-table-cell mui-col-xs-10 mui-text-center">
+                    <span class="mui-h5">{$val.desc|default=''}</span>
+                </div>
+            </div>
+        </li>
+        <li class="mui-table-view-cell">
+            <div class="mui-table">
+                <div class="mui-table-cell mui-col-xs-12 mui-text-left thumb list{$key}" thumblist="list{$key}" data-desc="{$val.desc|default=''}" data-create_at="{$val['create_at']}">
+                    {if isset($val['images']) && $val['images']['ahead_image'] != ''}
+                    <img class="mui-media-object mui-pull-left"
+                         style="max-width: 80px;line-height: 80px;height: 80px;margin-bottom: 10px;"
+                         src="{$val['images']['ahead_image']}">
+                    {/if}
+                    {if isset($val['images']) && $val['images']['side_image'] != ''}
+                    <img class="mui-media-object mui-pull-left"
+                         style="max-width: 80px;line-height: 80px;height: 80px;margin-bottom: 10px;"
+                         src="{$val['images']['side_image']}">
+                    {/if}
+                    {if isset($val['images']) && $val['images']['back_image']}
+                    <img class="mui-media-object mui-pull-left"
+                         style="max-width: 80px;line-height: 80px;height: 80px;margin-bottom: 10px;"
+                         src="{$val['images']['back_image']}">
+                    {/if}
+                    {if isset($val['images']) && $val['images']['inside_image_one']}
+                    <img class="mui-media-object mui-pull-left"
+                         style="max-width: 80px;line-height: 80px;height: 80px;margin-bottom: 10px;"
+                         src="{$val['images']['inside_image_one']}">
+                    {/if}
+                    {if isset($val['images']) && $val['images']['inside_image_two']}
+                    <img class="mui-media-object mui-pull-left"
+                         style="max-width: 80px;line-height: 80px;height: 80px;margin-bottom: 10px;"
+                         src="{$val['images']['inside_image_two']}">
+                    {/if}
+                    {if isset($val['images']) && $val['images']['nameplate_image']}
+                    <img class="mui-media-object mui-pull-left"
+                         style="max-width: 80px;line-height: 80px;height: 80px;margin-bottom: 10px;"
+                         src="{$val['images']['nameplate_image']}">
+                    {/if}
+                </div>
+            </div>
+        </li>
+        {/if}
+        {/foreach}
+
+
+    </ul>
+
+</div>
+
+<style>
+    img{
+        display:block;}
+    *{
+        margin:0;
+        padding:0;}
+    li{
+        list-style:none;}
+    #top{
+        width:100%;
+    }
+    #comment-list{
+        margin:1em 0;}
+    #comment-list li{
+        display:flex;
+        margin-top:1.3em;}
+    .face{
+        width:12%;
+        margin:0 2% 0 4%;}
+    .face img{
+        width:100%;}
+    .guest{
+        width:82%;
+        border-bottom:1px solid #dbdbdb;}
+    .name{
+        display:inline-block;
+        font-size:1.2em;
+        font-weight:500;}
+    .level{
+        margin-left:0.5em;}
+    .level img{ display:inline;
+        width:0.8em;}
+    .date{
+        float:right;
+        margin-right:3%;
+        color:#999;
+    }
+    .star{
+        margin-top:0.7em;}
+    .star img{
+        width:23%;}
+    .detail{
+        margin-top:0.3em;}
+    .thumb{
+        margin:1em 0;
+    }
+    .thumb img{
+        width:23%;
+        margin-right:0.5%;
+        display:inline-block;}
+    #origin-img{
+        display:none;
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background:#000;
+        z-index: 99;
+    }
+    #origin-img .swiper-slide img{
+        width:100%;
+        vertical-align:middle;
+    }
+    .swiper-pagination{
+        top:1em;
+        bottom:auto;
+        color:#fff;}
+    .upload{
+        position:absolute;
+        bottom:0;
+        line-height:3em;
+        background:rgba(0,0,0,.5);
+        z-index:5;
+        color:#fff;
+        text-indent:1em;
+        width:100%;}
+</style>
+
+
+<!-- Swiper -->
+<div class="swiper-container" id="origin-img">
+    <div class="swiper-wrapper"></div>
+    <div class="swiper-pagination"></div>
+    <div class="upload"></div>
+</div>
+
+<script>
+    var swiperStatus;
+    var swiper = new Swiper('.swiper-container',{
+        zoom:true,
+        width: window.innerWidth,
+        virtual: true,
+        spaceBetween:20,
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'fraction',
+        },
+        on:{
+            click: function(){
+                $('#origin-img').fadeOut('fast');
+                this.virtual.slides.length=0;
+                this.virtual.cache=[];
+                swiperStatus=false;
+
+            },
+        },
+    });
+
+    $('.thumb img').click(function(){
+        clickIndex=$(this).index();
+
+        imglist=$(this).parent().attr('thumblist');
+        imglist = '.'+imglist;
+        var childs = $(imglist).children('img');
+        var desc = $(imglist).data("desc");
+        var create_at = $(imglist).data("create_at");
+        $(".upload").html("<p>车辆状态 ： " +desc + "</p><p>上传时间 ： " + "" +create_at + "</p>");
+        var imgs = [];
+        $.each(childs,function (index, i) {
+            imgs.push($(i).attr("src"))
+        })
+
+        for(i=0;i<imgs.length;i++){
+            swiper.virtual.appendSlide('<div class="swiper-zoom-container"><img src="'+imgs[i]+'" /></div>');
+        }
+        swiper.slideTo(clickIndex);
+        $('#origin-img').fadeIn('fast');
+        swiperStatus=true;
+
+    })
+
+    //切换图状态禁止页面缩放
+//    document.addEventListener('touchstart',function (event) {
+//        if(event.touches.length>1 && swiperStatus){
+//            event.preventDefault();
+//        }
+//    })
+//    var lastTouchEnd=0;
+//    document.addEventListener('touchend',function (event) {
+//        var now=(new Date()).getTime();
+//        if(now-lastTouchEnd<=300){
+//            event.preventDefault();
+//        }
+//        lastTouchEnd=now;
+//    },false)
+//
+//    document.addEventListener('touchmove',function(e){
+//        if(swiperStatus){
+//            e.preventDefault();
+//        }
+//    })
+</script>
+
+<footer class="mll-footer" style="width: 100%;bottom: 0px;left: 0px;margin-top: 50px;">
+    <div class="mll-footer-icp">版权所有：粤ICP备08008334号</div>
+</footer>
+</body>
+</html>

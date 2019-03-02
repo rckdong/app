@@ -1,0 +1,21 @@
+{
+
+    "id": "1",
+    "date": "",
+    "name": "汪敏",
+    "address": "黑龙江省 牡丹江市 海林市",
+    "type":4,
+    "typeOptions":[
+        {
+            "value": 3,
+            "text": "中国"
+        },
+
+        {
+            "value": 4,
+            "text": "美国"
+        }
+
+    ]
+
+}

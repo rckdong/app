@@ -1,0 +1,144 @@
+{extend name="admin@public/main"}
+
+{block name='body'}
+
+<!-- 顶部菜单区域 开始 -->
+<div class="framework-topbar">
+    <div class="topbar-head pull-left">
+        <a href="{:url('@')}" class="topbar-logo pull-left">{:sysconf('app_name')} <sup>{:sysconf('app_version')}</sup></a>
+    </div>
+    <!--{foreach $menus as $oneMenu}-->
+    <a data-menu-node="m-{$oneMenu.id}" data-open="{$oneMenu.url}" class="topbar-btn pull-left transition">
+        {notempty name='oneMenu.icon'}<span class='font-s13 {$oneMenu.icon}'></span>&nbsp;{/notempty}
+        {$oneMenu.title|default=''}
+    </a>
+    <!--{/foreach}-->
+    <div class="pull-right">
+        <!--{if session('user.id')}-->
+        <div class="dropdown">
+            <a href="#" class="dropdown-toggle topbar-btn text-center transition" data-toggle="dropdown">
+                <span class="glyphicon glyphicon-user font-s13"></span>
+                {:session('user.username')}
+                <span class="toggle-icon glyphicon glyphicon-menu-up transition font-s13"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li class="topbar-btn"><a data-modal="{:url('admin/index/bind_weixin')}?id={:session('user.id')}" data-title="绑定微信帐号"><i class="glyphicon glyphicon-lock"></i> 绑定微信帐号</a></li>
+                <li class="topbar-btn"><a data-modal="{:url('admin/index/pass')}?id={:session('user.id')}" data-title="修改密码"><i class="glyphicon glyphicon-lock"></i> 修改密码</a></li>
+                <li class="topbar-btn"><a data-modal="{:url('admin/index/info')}?id={:session('user.id')}" data-title="修改资料"><i class="glyphicon glyphicon-edit"></i> 修改资料</a></li>
+                <li class="topbar-btn">
+                    <a data-load="{:url('admin/login/out')}" data-confirm="确定要退出登录吗？"><i class="glyphicon glyphicon-log-out"></i> 退出登录</a>
+                </li>
+            </ul>
+        </div>
+        <!--{else}-->
+        <div class="topbar-info-item">
+            <a data-href="{:url('@admin/login')}" data-toggle="dropdown" class=" topbar-btn text-center">
+                <span class='glyphicon glyphicon-user'></span> 立即登录 </span>
+            </a>
+        </div>
+        <!--{/if}-->
+    </div>
+    <a class="topbar-btn pull-right transition" data-tips-text="刷新" data-reload="true" style="width:50px"><span class="glyphicon glyphicon-refresh font-s12"></span></a>
+</div>
+<!-- 顶部菜单区域 结束 -->
+
+<!-- 左则菜单区域 开始 -->
+<div class="framework-leftbar">
+    {foreach $menus as $oneMenu}
+    <!--{notempty name='$oneMenu.sub'}-->
+    <div class="leftbar-container hide notselect" data-menu-layout="m-{$oneMenu.id}">
+        <div class="line-top">
+            <i class="layui-icon font-s12">&#xe65f;</i>
+        </div>
+        {foreach $oneMenu.sub as $twoMenu}
+        <!--{empty name='$twoMenu.sub'}-->
+        <a class='transition' data-menu-node="m-{$oneMenu.id}-{$twoMenu.id}" data-open="{$twoMenu.url}">
+            {notempty name='twoMenu.icon'}<span class='{$twoMenu.icon} font-icon'></span>&nbsp;{/notempty}
+            {$twoMenu.title}
+        </a>
+        <!--{else}-->
+        <div data-submenu-layout='m-{$oneMenu.id}-{$twoMenu.id}'>
+            <a class='menu-title transition'>
+                {notempty name='twoMenu.icon'}<span class='{$twoMenu.icon} font-icon'></span>&nbsp;{/notempty}
+                {$twoMenu.title} <i class='layui-icon pull-right font-s12 transition'>&#xe619;</i>
+            </a>
+            <div>
+                {foreach $twoMenu.sub as $thrMenu}
+                <?php if(strpos($thrMenu['url'],'http')!==false){ ?>
+                <a class='transition click_iframe' href="{$thrMenu.url}" target="myiframe" data-menu-node="m-{$oneMenu.id}-{$twoMenu.id}-{$thrMenu.id}">
+                    {notempty name='thrMenu.icon'}<span class='{$thrMenu.icon} font-icon'></span>{/notempty} {$thrMenu.title}
+                </a>
+                <?php }else{ ?>
+                <a class='transition click_open' data-open="{$thrMenu.url}" data-menu-node="m-{$oneMenu.id}-{$twoMenu.id}-{$thrMenu.id}">
+                    {notempty name='thrMenu.icon'}<span class='{$thrMenu.icon} font-icon'></span>{/notempty} {$thrMenu.title}
+                </a>
+                <?php } ?>
+                {/foreach}
+            </div>
+        </div>
+        <!--{/empty}-->
+        {/foreach}
+    </div>
+    <!--{/notempty}-->
+    {/foreach}
+</div>
+<!-- 左则菜单区域 结束 -->
+
+<!-- 右则内容区域 开始 -->
+<div class="notification sticky hide">
+    <p id="content"> </p>
+    <a class="close" href="javascript:"> <img src="__STATIC__/icon-close.png" /></a>
+</div>
+<div class="framework-body"></div>
+<iframe name="myiframe" id="myiframe" src=""  frameborder="0" align="left" width="85%" height="90%" style="display: none">
+    <p>你的浏览器不支持iframe标签</p>
+</iframe>
+<!-- 右则内容区域 结束 -->
+<style>
+    #myiframe{
+        right: 0;
+        bottom: 0;
+        top: 50px;
+        left: 220px;
+        position: fixed;
+        overflow-y: scroll;
+        z-index: 1;
+    }
+</style>
+<script>
+    $(".click_iframe").on('click',function () {
+        $(".framework-body").hide();
+        $("#myiframe").show();
+    })
+
+    $(".click_open").on('click',function () {
+        $("#myiframe").hide();
+        $(".framework-body").show();
+    })
+</script>
+<script src='http://cdn.bootcss.com/socket.io/1.3.7/socket.io.js'></script>
+<script src='__STATIC__/notify.js'></script>
+<link href="__STATIC__/main.css" rel="stylesheet" type="text/css" />
+<script>
+    /* {if (null !== $Think.session.user.id) && $Think.session.user.id != 0} */
+    // 连接服务端
+    var socket = io('http://chexinyuan.com:2120');
+    // uid可以是自己网站的用户id，以便针对uid推送以及统计在线人数
+    uid = '{$Think.session.user.id}';
+    // socket连接后以uid登录
+    socket.on('connect', function(){
+        socket.emit('login', uid);
+    });
+    // 后端推送来消息时
+    socket.on('new_msg', function(data){
+        data = JSON.parse(data);
+        $('#content').html('收到消息：'+data.msg);
+        $('.notification.sticky').notify();
+    });
+    // 使用人数
+    //    socket.on('update_online_count', function(online_stat){
+    //        console.log(online_stat);
+    //    });
+    /*  {/if} */
+</script>
+{/block}

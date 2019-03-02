@@ -1,0 +1,82 @@
+{extend name='admin@public/content'}
+
+{block name="button"}
+
+{/block}
+
+{block name="content"}
+
+<!-- 表单搜索 开始 -->
+<script>
+    window.laydate.render({range: true, elem: '#create_at'});
+    window.form.render();
+</script>
+<!-- 表单搜索 结束 -->
+
+<form onsubmit="return false;" data-auto="true" method="post">
+    {if empty($list)}
+    <p class="help-block text-center well">没 有 记 录 哦！</p>
+    {else}
+    <input type="hidden" value="resort" name="action"/>
+    <table class="layui-table" lay-skin="line">
+        <thead>
+        <tr>
+            <th class='list-table-check-td'>
+                <input data-auto-none="none" data-check-target='.list-check-box' type='checkbox'/>
+            </th>
+            <th class='text-left nowrap'>审批类型</th>
+            <th class='text-left nowrap'>销售</th>
+            <th class='text-left nowrap'>合同编号</th>
+            <th class='text-left nowrap'>订车日期</th>
+            <th class='text-left nowrap'>客户名称</th>
+            <th class='text-left nowrap'>品牌</th>
+            <th class='text-left nowrap'>车型</th>
+            <th class='text-left nowrap'>指导价</th>
+            <th class='text-left nowrap'>成交价</th>
+            <th class='text-left nowrap'>合同类型</th>
+            <th class='text-left'></th>
+        </tr>
+        </thead>
+        <tbody>
+        {foreach $list as $key=>$vo}
+        <tr>
+            <td class='list-table-check-td'>
+                <input class="list-check-box" value='{$vo.id}' type='checkbox'/>
+            </td>
+            <td class='text-left nowrap'>
+                {if $vo.type eq 0}<span class="color-green">普通流程审批</span>{elseif $vo.type eq 1}<span class="color-red">退订审批</span>{elseif $vo.type eq 2}<span class="color-green">修改审批</span>{/if}
+            </td>
+            <td class='text-left nowrap'>{$vo.saler_name}</td>
+            <td class='text-left nowrap'>{$vo.contract_number}</td>
+            <td class='text-left nowrap'>{$vo.book_time}</td>
+            <td class='text-left nowrap'>{$vo.nickname}</td>
+            <td class='text-left nowrap'>{$vo.brand_name}</td>
+            <td class='text-left nowrap'>{$vo.car_model}</td>
+            <td class='text-left nowrap'>{$vo.guidance_price}</td>
+            <td class='text-left nowrap'>{$vo.transaction_price}</td>
+            <td class='text-left nowrap'>
+                {if $vo.contract_type eq 1}<span class="color-green">定车合同</span>{elseif $vo.contract_type eq 2}<span class="color-green">订车合同</span>{/if}
+            </td>
+
+            <td class='text-left nowrap'>
+
+                {if auth("$classuri/edit")}
+                <span class="text-explode">|</span>
+                <a data-title="审核" data-modal='{:url("$classuri/edit")}?id={$vo.id}'>审核</a>
+                {/if}
+
+
+                {if auth("$classuri/edit")}
+                <span class="text-explode">|</span>
+                <a data-title="查看预算" data-modal='{:url("$classuri/get_info")}?contacts_id={$vo.contacts_id}'>查看预算</a>
+                {/if}
+
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    {if isset($page)}<p>{$page|raw}</p>{/if}
+    {/if}
+</form>
+{/block}

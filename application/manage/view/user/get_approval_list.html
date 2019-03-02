@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>待审核列表</title>
+    {include file="public/header" /}
+</head>
+
+
+<body>
+
+<script type="text/javascript">!function (a) {
+    function b() {
+        var b = g.getBoundingClientRect().width;
+        b / c > 640 && (b = 640 * c), a.rem = b / 16, g.style.fontSize = a.rem + "px"
+    }
+
+    var c, d, e, f = a.document, g = f.documentElement, h = f.querySelector('meta[name="viewport"]'),
+        i = f.querySelector('meta[name="flexible"]');
+    if (h) {
+        console.warn("将根据已有的meta标签来设置缩放比例");
+        var j = h.getAttribute("content").match(/initial-scale=(["']?)([d.]+)1?/);
+        j && (d = parseFloat(j[2]), c = parseInt(1 / d))
+    } else if (i) {
+        var j = i.getAttribute("content").match(/initial-dpr=(["']?)([d.]+)1?/);
+        j && (c = parseFloat(j[2]), d = parseFloat((1 / c).toFixed(2)))
+    }
+    if (!c && !d) {
+        var k = (a.navigator.appVersion.match(/android/gi), a.navigator.appVersion.match(/iphone/gi)),
+            c = a.devicePixelRatio;
+        c = k ? c >= 3 ? 3 : c >= 2 ? 2 : 1 : 1, d = 1 / c
+    }
+    if (g.setAttribute("data-dpr", c), !h) if (h = f.createElement("meta"), h.setAttribute("name", "viewport"), h.setAttribute("content", "initial-scale=" + d + ", maximum-scale=" + d + ", minimum-scale=" + d + ", user-scalable=no"), g.firstElementChild) g.firstElementChild.appendChild(h); else {
+        var l = f.createElement("div");
+        l.appendChild(h), f.write(l.innerHTML)
+    }
+    a.dpr = c, a.addEventListener("resize", function () {
+        clearTimeout(e), e = setTimeout(b, 300)
+    }, !1), a.addEventListener("pageshow", function (a) {
+        a.persisted && (clearTimeout(e), e = setTimeout(b, 300))
+    }, !1), "complete" === f.readyState ? f.body.style.fontSize = 12 * c + "px" : f.addEventListener("DOMContentLoaded", function () {
+            f.body.setAttribute('fontSize', 12 * c + "px")
+        }, !1), b()
+}(window);
+/*app body*/
+(function (b) {
+    var a = b.body;
+    var e = navigator.userAgent;
+    /in_app_not_header/i.test(e) && (a.className += " app-body-no-header");
+    /in_app_not_footer/i.test(e) && (a.className += " app-body-no-footer");
+
+    function d() {
+        var g = location.search;
+        var f = new Object();
+        if (g.indexOf("?") != -1) {
+            var j = g.substr(1);
+            strs = j.split("&");
+            for (var h = 0; h < strs.length; h++) {
+                f[strs[h].split("=")[0]] = (strs[h].split("=")[1])
+            }
+        }
+        return f
+    }
+
+    var c = d();
+    if (c.APP_NAME && c.APP_NAME == "MLL_ADMIN") {
+        a.className += " app-body-no-toolbar"
+    }
+})(document);</script>
+
+<style>
+    *{
+        color: #333;
+    }
+    .menu {
+        width: 100%;
+        clear: both;
+        padding-top: 5px;
+        /* background: rgba(0,0,0,0.2); */
+        background-color: rgba(255, 255, 255, .5);
+        overflow: hidden;
+    }
+
+    .menu-item {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .menu li {
+        float: left;
+        width: 20%;
+        line-height: 40px;
+        text-align: center;
+    }
+
+    .goto-pay {
+        display: block;
+        width: 100%;
+        text-align: center;
+        height: 48px;
+        line-height: 48px;
+        background-color: #75d0ff;
+        color: #fff;
+        font-size: 18px;
+    }
+
+    .mui-card{
+        margin: 10px 0;
+    }
+    .mui-card-media p{
+        color: #999;
+    }
+    .approval_list h1{
+        text-align: center;
+        border-bottom: 1px solid #c8c7cc;
+        padding: 10px 0;
+        font-weight: normal;
+    }
+    .approval_list h1 span{
+        font-size: 14px;
+    }
+    .approval_list p{
+        color: #999;
+        line-height: 1.2rem;
+        padding: 0 10px;
+    }
+    .mui-card-header:after{
+        background-color: #fff;
+    }
+</style>
+
+<div class="mui-content">
+    {foreach $list as $key => $vo}
+    <div class="mui-card">
+        <!--页眉，放置标题-->
+        <div class="mui-card-header  mui-card-media">
+            <div class="mui-media-body" style="margin-left:0;">
+                {if $vo.type eq 0}<span class="color-green">普通流程审批</span>{elseif $vo.type eq 1}<span class="color-red">退订审批</span>{elseif $vo.type eq 2}<span class="color-green">修改审批</span>{/if}
+                <p>{$vo.create_at}</p>
+            </div>
+        </div>
+        <a href="{:url('manage/user/budget_info')}?contacts_id={$vo.contacts_id}&id={$vo.id}">
+        <!--内容区-->
+        <div class="mui-card-content">
+            <div class="approval_list">
+                <h1>{$vo.transaction_price} <span>元</span></h1>
+                <p style="padding-top: 10px;"><span>合同编号：</span>{$vo.contract_number}</p>
+                <p><span>品牌：</span>{$vo.brand_name}</p>
+                <p><span>车型：</span>{$vo.car_model}</p>
+                <p><span>颜色：</span>{$vo.car_color}</p>
+                <p><span>下单日期：</span>{$vo.book_time}</p>
+                <p><span>指导价：</span>{$vo.guidance_price}</p>
+                <p style="padding-bottom: 10px;"><span>销售：</span>{$vo.saler_name}</p>
+            </div>
+        </div>
+        <!--页脚，放置补充信息或支持的操作-->
+        <div class="mui-card-footer">查看详情</div>
+        </a>
+    </div>
+    {/foreach}
+</div>
+
+
+<footer class="mll-footer" style="width: 100%;bottom: 0px;left: 0px;margin-top: 50px;">
+    <div class="mll-footer-icp">版权所有：粤ICP备08008334号</div>
+</footer>
+
+<!--<div class="mll-footer" style="position:absolute;width: 100%;bottom: 0px;left: 0px;">-->
+    <!--<a href="#" class="goto-pay">去付款</a>-->
+<!--</div>-->
+
+</body>
+</html>

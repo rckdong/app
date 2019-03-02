@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>{:sysconf('wap_title')}</title>
+    <meta name="keywords" content="{:sysconf('wap_keywords')}">
+    <meta name="description" content="{:sysconf('wap_description')}">
+
+    <link href="__STATIC__/index_files/swiper-3.3.1.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="__STATIC__/index_files/dropload.css">
+
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="no-cache" http-equiv="pragma">
+    <meta content="no-cache" http-equiv="cache-control">
+
+    <link href="__STATIC__/index_files/cheshangle.css" rel="stylesheet" type="text/css">
+    <link href="__STATIC__/index_files/cheoo.css" rel="stylesheet" type="text/css">
+
+    <script src="__STATIC__/index_files/jquery-1.8.3.min.js"></script>
+    <script src="__STATIC__/index_files/cheshangle.js"></script>
+    <script src="__STATIC__/index_files/shencong.js"></script>
+    {include file="public/baidu_hm" /}
+</head>
+
+<body>
+<div class="M_scrollHidden">
+
+    <div class="M_main pt0">
+        <!-- 下载提示 begin -->
+        <!-- 经销商 begin -->
+        <div class="M_main_con M_clearfix">
+
+            <div class="M_distributor">
+
+                <div class="title">
+
+                    <!--<a href="javascript:back();" class="left"><i class="M_icon M_icon_arrow-lw"></i></a>-->
+
+                    <div class="img">
+                        <img src="{:sysconf('company_image')}">
+                    </div>
+
+                    <h1>{:sysconf('company_name')}<i class="M_icon M_icon_zhan M_ml5"></i></h1>
+
+                    <p><a href="https://apis.map.qq.com/uri/v1/search?keyword=龙岗区宝南路9号101室&region=深圳&referer=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77"><i class="M_icon M_icon_location-b"></i>{:sysconf('company_address')}</a> </p>
+
+                    <a href="javascript:showPhone(111564);" id="dealer_index_button" class="M_btn M_btn_blue M_br3"><i
+                            class="M_icon M_icon_tel-w M_mr5"></i>销售热线</a>
+
+                </div>
+
+                <div class="menu">
+
+                    <ul>
+
+                        <li class=""><a href="{:url('wap/index/index')}">首页</a></li>
+
+                        <li class="current"><a href="/index.php/wap/index/get_list">全部车型</a></li>
+
+                        <li class=""><a href="/index.php/wap/index/has_sale">已售车型</a></li>
+
+                        <li class=""><a href="{:url('wap/index/about')}">关于我们</a></li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!-- 电话弹层 begin -->
+        <div class="M_pop_tel" id="">
+
+            <ul class="list M_br12">
+
+            </ul>
+
+            <a href="javascript:hidePhone();" class="close M_br12">取消</a>
+
+        </div>
+
+        <div class="M_pop-bg"></div>
+
+
+        <!-- 车型报价 begin -->
+        <div class="M_main_con">
+            <!-- 一级分类 begin -->
+            <div class="swiper-container swiper-container-horizontal swiper-container-free-mode">
+                <div class="swiper-wrapper M_tag" style="transform: translate3d(0px, 0px, 0px);">
+                    <!--{if isset($_GET['cate_id'])}-->
+                    <div class="swiper-slide see_all swiper-slide-active" style="margin-right: 12px;"><a
+                            href="{:url('wap/index/get_list')}" class=" M_br3">全部车型</a></div>
+                    <!--{else}-->
+                    <div class="swiper-slide see_all " style="margin-right: 12px;"><a
+                            href="{:url('wap/index/get_list')}" class="current M_br3">全部车型</a></div>
+                    <!--{/if}-->
+
+                    <!--swiper-slide-next-->
+                    {foreach $cate_list as $key => $val}
+                    <div class="swiper-slide" style="margin-right: 12px;">
+                        <!--{if ($active_cate2 == $val['id'] || $active_cate1 == $val['id']) }-->
+                        <a href="{:url('wap/index/get_list')}?cate_id={$val.id}"
+                           class="current M_br3">{$val.cate_title}</a>
+                        <!--{else}-->
+                        <a href="{:url('wap/index/get_list')}?cate_id={$val.id}" class=" M_br3">{$val.cate_title}</a>
+                        <!--{/if}-->
+                    </div>
+                    {/foreach}
+                </div>
+            </div>
+            <!-- 二级分类 begin -->
+            {if isset($cate_list2) && count($cate_list2) > 0}
+            <div class="swiper-container swiper-container-horizontal swiper-container-free-mode">
+                <div class="swiper-wrapper M_tag" style="transform: translate3d(0px, 0px, 0px);">
+                    <!--swiper-slide-next-->
+                    {foreach $cate_list2 as $key => $val}
+                    <div class="swiper-slide" style="margin-right: 12px;">
+                        <!--{if ($active_cate2 == $val['id'] || $active_cate1 == $val['id']) }-->
+                        <a href="{:url('wap/index/get_list')}?cate_id={$val.id}"
+                           class="current M_br3">{$val.cate_title}</a>
+                        <!--{else}-->
+                        <a href="{:url('wap/index/get_list')}?cate_id={$val.id}" class=" M_br3">{$val.cate_title}</a>
+                        <!--{/if}-->
+                    </div>
+                    {/foreach}
+                </div>
+            </div>
+            {/if}
+
+
+
+            <div class="ajax_content">
+                <ul class="M_choice M_series M_clearfix">
+                    {foreach $list as $key=>$vo}
+                    <li>
+                        <a href="/index.php/wap/index/info?id={$vo.id}">
+                            <div class="title2" style="overflow: hidden">
+                                <span class="title_name" >{$vo.goods_title}</span>
+                                <span class="price" style="text-align: right;width: 20%;float: right">{$vo.goods_prices} 万起</span>
+                            </div>
+                            <div class="title2 guide"><em style="float: right;color: #a5a5a5;text-decoration:line-through">厂家指导价: {$vo.guid_price} 万</em></div>
+                        </a>
+                    </li>
+                    {/foreach}
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="__STATIC__/index_files/jquery-1.8.3.min.js"></script>
+<script src="__STATIC__/index_files/swiper-3.3.1.jquery.min.js"></script>
+<script src="__STATIC__/index_files/shencong.js"></script>
+<script src="__STATIC__/index_files/dropload.min.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 'auto',
+        centeredSlides: false,
+        spaceBetween: 12,
+        grabCursor: true,
+        freeMode: true
+    });
+</script>
+<script>
+    $(function () {
+        // dropload
+        var nextPage = 2;
+        var url = "{:url('wap/index/get_list')}";
+        if (url.indexOf('?') != -1) {
+            url = url + '&';
+        } else {
+            url = url + '?';
+        }
+        var dropload = $('.ajax_content').dropload({
+            domDown: {
+                domClass: 'dropload-down',
+                domRefresh: '<div class="dropload-refresh">↑上拉加载更多</div>',
+                domLoad: '<div class="dropload-load"><span class="loading"></span>加载中...</div>',
+                domNoData: '<div class="dropload-noData"></div>'
+            },
+            scrollArea: window,
+            loadDownFn: function (me) {
+                $.ajax({
+                    type: 'GET',
+                    url: url + "page=" + nextPage,
+                    dataType: 'json',
+                    success: function (data) {
+                        $('.M_choice').append(data.str);
+                        // 每次数据加载完，必须重置
+                        if (data.nextPage == 0) {
+                            dropload.lock();
+                            dropload.noData();
+                        } else {
+                            nextPage = data.nextPage;
+                        }
+                        dropload.resetload();
+                    },
+                    error: function (xhr, type) {
+                        dropload.lock();
+                        dropload.noData();
+                        dropload.resetload();
+                    }
+                });
+            }
+        });
+
+//        var obj = $(".swiper-slide .current").parent();
+//        if (!obj.hasClass('see_all')) {
+//            obj.prependTo($(".swiper-wrapper"))
+//            $(".see_all").prependTo($(".swiper-wrapper"))
+//        }
+    });
+</script>
+</body>
+</html>

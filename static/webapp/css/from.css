@@ -1,0 +1,35 @@
+img{ width: 100%;}
+ul,
+li {
+    list-style-type: none;
+}
+.mui-bar
+{
+    position: fixed;
+    z-index: 100;
+    right: 0;
+    left: 0;
+    height: 44px;
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #636363;
+    border-bottom: 0;
+    background-color: #ffffff;
+
+
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+.mui-action-back{
+    color: #000;
+}
+
+body{ background: #F6F5FA;}
+.none{ display: none;}
+#mui-color{ background: #fff; box-shadow: 0 0 0; border-bottom: 1px solid #f4f4f6; z-index: 100; }
+
+.hidden{ display: none}
+
+

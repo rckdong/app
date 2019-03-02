@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>上牌记录</title>
+    {include file="public/header" /}
+</head>
+
+
+<body>
+
+<script type="text/javascript">!function (a) {
+    function b() {
+        var b = g.getBoundingClientRect().width;
+        b / c > 640 && (b = 640 * c), a.rem = b / 16, g.style.fontSize = a.rem + "px"
+    }
+
+    var c, d, e, f = a.document, g = f.documentElement, h = f.querySelector('meta[name="viewport"]'),
+        i = f.querySelector('meta[name="flexible"]');
+    if (h) {
+        console.warn("将根据已有的meta标签来设置缩放比例");
+        var j = h.getAttribute("content").match(/initial-scale=(["']?)([d.]+)1?/);
+        j && (d = parseFloat(j[2]), c = parseInt(1 / d))
+    } else if (i) {
+        var j = i.getAttribute("content").match(/initial-dpr=(["']?)([d.]+)1?/);
+        j && (c = parseFloat(j[2]), d = parseFloat((1 / c).toFixed(2)))
+    }
+    if (!c && !d) {
+        var k = (a.navigator.appVersion.match(/android/gi), a.navigator.appVersion.match(/iphone/gi)),
+            c = a.devicePixelRatio;
+        c = k ? c >= 3 ? 3 : c >= 2 ? 2 : 1 : 1, d = 1 / c
+    }
+    if (g.setAttribute("data-dpr", c), !h) if (h = f.createElement("meta"), h.setAttribute("name", "viewport"), h.setAttribute("content", "initial-scale=" + d + ", maximum-scale=" + d + ", minimum-scale=" + d + ", user-scalable=no"), g.firstElementChild) g.firstElementChild.appendChild(h); else {
+        var l = f.createElement("div");
+        l.appendChild(h), f.write(l.innerHTML)
+    }
+    a.dpr = c, a.addEventListener("resize", function () {
+        clearTimeout(e), e = setTimeout(b, 300)
+    }, !1), a.addEventListener("pageshow", function (a) {
+        a.persisted && (clearTimeout(e), e = setTimeout(b, 300))
+    }, !1), "complete" === f.readyState ? f.body.style.fontSize = 12 * c + "px" : f.addEventListener("DOMContentLoaded", function () {
+            f.body.setAttribute('fontSize', 12 * c + "px")
+        }, !1), b()
+}(window);
+/*app body*/
+(function (b) {
+    var a = b.body;
+    var e = navigator.userAgent;
+    /in_app_not_header/i.test(e) && (a.className += " app-body-no-header");
+    /in_app_not_footer/i.test(e) && (a.className += " app-body-no-footer");
+
+    function d() {
+        var g = location.search;
+        var f = new Object();
+        if (g.indexOf("?") != -1) {
+            var j = g.substr(1);
+            strs = j.split("&");
+            for (var h = 0; h < strs.length; h++) {
+                f[strs[h].split("=")[0]] = (strs[h].split("=")[1])
+            }
+        }
+        return f
+    }
+
+    var c = d();
+    if (c.APP_NAME && c.APP_NAME == "MLL_ADMIN") {
+        a.className += " app-body-no-toolbar"
+    }
+})(document);</script>
+
+<script type="text/javascript">
+    window._gaq = window._gaq || [];
+    window._ana = window._ana || [];
+    _ana.baseTime = new Date().getTime();
+    window.$$ = window.$$ || {};
+    $$.__IMG = 'http://img002.mllres.com' || 'http://image.meilele.com';
+    window._onReadyList = window._onReadyList || [];
+    window._$_ = function (id) {
+        return document.getElementById(id)
+    };
+</script>
+
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+    <h1 class="mui-title">上牌记录信息</h1>
+</header>
+
+<style>
+    .no-bottom:after {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 15px;
+        height: 1px;
+        content: '';
+        -webkit-transform: scaleY(.5);
+        transform: scaleY(.5);
+        background-color: #fff !important;
+    }
+</style>
+
+<div class="mui-content" style="max-width: 100%;margin: 0 auto; background: none;">
+
+    <ul class="mui-table-view mui-table-view-striped mui-table-view-condensed">
+        <li class="mui-table-view-cell">
+            <div class="mui-table">
+                <div class="mui-table-cell mui-col-xs-2 mui-text-left">
+                    <h4 class="">日期</h4>
+                </div>
+                <div class="mui-table-cell mui-col-xs-10 mui-text-center">
+                    <h4 class="">进度</h4>
+                </div>
+            </div>
+        </li>
+
+        {foreach $list as $key =>$val}
+        <li class="mui-table-view-cell">
+            <div class="mui-table">
+                <div class="mui-table-cell mui-col-xs-2 mui-text-left">
+                    <span class="mui-h5">{$val['create_at']}</span>
+                </div>
+                <div class="mui-table-cell mui-col-xs-10 mui-text-left">
+                    <span class="mui-h5">{$val.desc|default=''}</span>
+                </div>
+            </div>
+        </li>
+        {/foreach}
+    </ul>
+
+</div>
+
+<footer class="mll-footer" style="width: 100%;bottom: 0px;left: 0px;margin-top: 50px;">
+    <div class="mll-footer-icp">版权所有：粤ICP备08008334号</div>
+</footer>
+</body>
+</html>

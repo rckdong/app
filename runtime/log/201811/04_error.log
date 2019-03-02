@@ -1,0 +1,12 @@
+---------------------------------------------------------------
+[ 2018-11-04T14:39:54+08:00 ] 127.0.0.1 GET /index.php/webapi/contract/index.html
+[ error ] [8]未定义变量: infoency_[E:\car_subsystem\runtime\temp\c3ee098d71c2f1798977e01c3fa65246.php:282]
+---------------------------------------------------------------
+[ 2018-11-04T15:33:24+08:00 ] 127.0.0.1 GET /index.php/webapi/contract/car_info.html?contract_id=47
+[ error ] [8]未定义变量: info[E:\car_subsystem\runtime\temp\40874be76739ffb50652b3f2fe9a592a.php:293]
+---------------------------------------------------------------
+[ 2018-11-04T15:37:27+08:00 ] 127.0.0.1 GET /index.php/webapi/contract/car_info.html?contract_id=47
+[ error ] [8]未定义变量: info[E:\car_subsystem\runtime\temp\40874be76739ffb50652b3f2fe9a592a.php:343]
+---------------------------------------------------------------
+[ 2018-11-04T15:37:53+08:00 ] 127.0.0.1 GET /index.php/webapi/contract/car_info.html?contract_id=47
+[ error ] [8]未定义变量: info[E:\car_subsystem\runtime\temp\40874be76739ffb50652b3f2fe9a592a.php:345]

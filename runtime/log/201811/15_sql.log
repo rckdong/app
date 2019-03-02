@@ -1,0 +1,87 @@
+---------------------------------------------------------------
+[ 2018-11-15T15:39:50+08:00 ] 127.0.0.1 GET /
+[ sql ] [ DB ] CONNECT:[ UseTime:0.007376s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `product_saled` [ RunTime:0.101963s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `product_saled` WHERE  `is_deleted` = 0 LIMIT 1 [ RunTime:0.013819s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.119422s ]
+[ sql ] [ SQL ] SELECT `name`,`value` FROM `system_config` [ RunTime:0.001969s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `goods` [ RunTime:0.245024s ]
+[ sql ] [ SQL ] SELECT `id`,`goods_title`,`goods_prices`,`goods_logo`,`guid_price`,`goods_tag` FROM `goods` WHERE  `is_deleted` = 0 ORDER BY `sort` LIMIT 10 [ RunTime:0.069810s ]
+[ sql ] [ SQL ] SELECT * FROM `product_saled` ORDER BY id desc LIMIT 10 [ RunTime:0.001154s ]
+---------------------------------------------------------------
+[ 2018-11-15T15:39:53+08:00 ] 127.0.0.1 GET /
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002758s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `product_saled` [ RunTime:0.046918s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `product_saled` WHERE  `is_deleted` = 0 LIMIT 1 [ RunTime:0.001013s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.042049s ]
+[ sql ] [ SQL ] SELECT `name`,`value` FROM `system_config` [ RunTime:0.000739s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `goods` [ RunTime:0.049890s ]
+[ sql ] [ SQL ] SELECT `id`,`goods_title`,`goods_prices`,`goods_logo`,`guid_price`,`goods_tag` FROM `goods` WHERE  `is_deleted` = 0 ORDER BY `sort` LIMIT 10 [ RunTime:0.002196s ]
+[ sql ] [ SQL ] SELECT * FROM `product_saled` ORDER BY id desc LIMIT 10 [ RunTime:0.001545s ]
+---------------------------------------------------------------
+[ 2018-11-15T15:39:53+08:00 ] 127.0.0.1 GET /
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002128s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `product_saled` [ RunTime:0.087681s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `product_saled` WHERE  `is_deleted` = 0 LIMIT 1 [ RunTime:0.001484s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.020997s ]
+[ sql ] [ SQL ] SELECT `name`,`value` FROM `system_config` [ RunTime:0.000786s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `goods` [ RunTime:0.022203s ]
+[ sql ] [ SQL ] SELECT `id`,`goods_title`,`goods_prices`,`goods_logo`,`guid_price`,`goods_tag` FROM `goods` WHERE  `is_deleted` = 0 ORDER BY `sort` LIMIT 10 [ RunTime:0.002193s ]
+[ sql ] [ SQL ] SELECT * FROM `product_saled` ORDER BY id desc LIMIT 10 [ RunTime:0.002440s ]
+---------------------------------------------------------------
+[ 2018-11-15T15:40:03+08:00 ] 127.0.0.1 GET /index.php/webapi/user/user_center
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001776s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_node` [ RunTime:0.078527s ]
+[ sql ] [ SQL ] SELECT * FROM `system_node` WHERE  `node` = 'webapi/user/user_center' LIMIT 1 [ RunTime:0.001030s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `app_users` [ RunTime:0.091388s ]
+[ sql ] [ SQL ] SELECT * FROM `app_users` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001994s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.056506s ]
+[ sql ] [ SQL ] SELECT `id`,`car_model`,`transaction_price` FROM `contacts` WHERE  `user_id` = 1  AND `is_deleted` = 0 ORDER BY id desc LIMIT 1 [ RunTime:0.000791s ]
+---------------------------------------------------------------
+[ 2018-11-15T15:40:08+08:00 ] 127.0.0.1 GET /index.php/webapi/user/user_center
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002780s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_node` [ RunTime:0.063544s ]
+[ sql ] [ SQL ] SELECT * FROM `system_node` WHERE  `node` = 'webapi/user/user_center' LIMIT 1 [ RunTime:0.001453s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `app_users` [ RunTime:0.038960s ]
+[ sql ] [ SQL ] SELECT * FROM `app_users` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001084s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.087752s ]
+[ sql ] [ SQL ] SELECT `id`,`car_model`,`transaction_price` FROM `contacts` WHERE  `user_id` = 1  AND `is_deleted` = 0 ORDER BY id desc LIMIT 1 [ RunTime:0.000813s ]
+---------------------------------------------------------------
+[ 2018-11-15T15:40:11+08:00 ] 127.0.0.1 GET /index.php/webapi/user/gouche.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002410s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_node` [ RunTime:0.040665s ]
+[ sql ] [ SQL ] SELECT * FROM `system_node` WHERE  `node` = 'webapi/user/gouche' LIMIT 1 [ RunTime:0.001174s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.057376s ]
+[ sql ] [ SQL ] SELECT `id`,`contract_type`,`contract_number` FROM `contacts` WHERE  `user_id` = 1  AND `is_deleted` = 0 ORDER BY id desc LIMIT 1 [ RunTime:0.000794s ]
+---------------------------------------------------------------
+[ 2018-11-15T15:40:12+08:00 ] 127.0.0.1 GET /index.php/webapi/contract/index.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003448s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_node` [ RunTime:0.046779s ]
+[ sql ] [ SQL ] SELECT * FROM `system_node` WHERE  `node` = 'webapi/contract/index' LIMIT 1 [ RunTime:0.000880s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.039715s ]
+[ sql ] [ SQL ] SELECT * FROM `contacts` WHERE  `user_id` = 1  AND `is_deleted` = 0 ORDER BY id desc LIMIT 1 [ RunTime:0.002745s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `insurance` [ RunTime:0.160000s ]
+[ sql ] [ SQL ] SELECT * FROM `insurance` WHERE  ( id in (3,4,5,6,7,8,9,10,11,12,13) )  AND `is_deleted` = 0 [ RunTime:0.001166s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `city` [ RunTime:0.059168s ]
+[ sql ] [ SQL ] SELECT * FROM `city` WHERE  `id` = 387 LIMIT 1 [ RunTime:0.015881s ]
+[ sql ] [ SQL ] SELECT * FROM `city` WHERE  `id` = 349 LIMIT 1 [ RunTime:0.000686s ]
+[ sql ] [ SQL ] SELECT * FROM `city` WHERE  `id` = 387 LIMIT 1 [ RunTime:0.000618s ]
+[ sql ] [ SQL ] SELECT * FROM `city` WHERE  `id` = 349 LIMIT 1 [ RunTime:0.000575s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `products` [ RunTime:0.061098s ]
+[ sql ] [ SQL ] SELECT `p`.*,c.name as cate_name FROM `products` `p` LEFT JOIN `products_cate` `c` ON `c`.`id`=`p`.`cate_id` WHERE  ( p.id in (1,5) )  AND `p`.`is_deleted` = '0' [ RunTime:0.022323s ]
+---------------------------------------------------------------
+[ 2018-11-15T15:40:26+08:00 ] 127.0.0.1 GET /index.php/webapi/user/gouche.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001741s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_node` [ RunTime:0.049299s ]
+[ sql ] [ SQL ] SELECT * FROM `system_node` WHERE  `node` = 'webapi/user/gouche' LIMIT 1 [ RunTime:0.001616s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.048268s ]
+[ sql ] [ SQL ] SELECT `id`,`contract_type`,`contract_number` FROM `contacts` WHERE  `user_id` = 1  AND `is_deleted` = 0 ORDER BY id desc LIMIT 1 [ RunTime:0.000833s ]
+---------------------------------------------------------------
+[ 2018-11-15T22:43:15+08:00 ] 127.0.0.1 GET /index.php/webapi/user/user_center
+[ sql ] [ DB ] CONNECT:[ UseTime:0.007889s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_node` [ RunTime:0.055763s ]
+[ sql ] [ SQL ] SELECT * FROM `system_node` WHERE  `node` = 'webapi/user/user_center' LIMIT 1 [ RunTime:0.001867s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `app_users` [ RunTime:0.050412s ]
+[ sql ] [ SQL ] SELECT * FROM `app_users` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001589s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.067542s ]
+[ sql ] [ SQL ] SELECT `id`,`car_model`,`transaction_price` FROM `contacts` WHERE  `user_id` = 1  AND `is_deleted` = 0 ORDER BY id desc LIMIT 1 [ RunTime:0.001545s ]

@@ -1,0 +1,91 @@
+{extend name="admin@public/content"}
+
+{block name="content"}
+<form onsubmit="return false;" action="{:request()->url()}" data-auto="true" method="post" class='form-horizontal layui-form padding-top-20'>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            <span class="nowrap color-desc">公司余额</span>
+        </label>
+        <div class='col-sm-8'>
+            <p class="help-block">{$info.all}</p>
+        </div>
+    </div>
+
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            销售报表
+        </label>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            <span class="nowrap color-desc">月度</span>
+        </label>
+        <div class='col-sm-8'>
+            <p class="help-block">订单（提交的合同总数） {$info.all_count}    |   交车（提交的合同总数）   {$info.finish_count}</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            <span class="nowrap color-desc">季度</span>
+        </label>
+        <div class='col-sm-8'>
+            <p class="help-block">订单（提交的合同总数） {$info.all_count}    |   交车（提交的合同总数）   {$info.finish_count}</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            <span class="nowrap color-desc">年度</span>
+        </label>
+        <div class='col-sm-8'>
+            <p class="help-block">订单（提交的合同总数） {$info.all_count}    |   交车（提交的合同总数）   {$info.finish_count}</p>
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            行政数据
+        </label>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            <span class="nowrap color-desc">月度</span>
+        </label>
+        <div class='col-sm-8'>
+            <p class="help-block">收入 {$info.income}    |   支出  {$info.out}</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            <span class="nowrap color-desc">季度</span>
+        </label>
+        <div class='col-sm-8'>
+            <p class="help-block">收入 {$info.income}    |   支出  {$info.out}</p>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            <span class="nowrap color-desc">年度</span>
+        </label>
+        <div class='col-sm-8'>
+            <p class="help-block">收入 {$info.income}    |   支出  {$info.out}</p>
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+
+
+</form>
+
+{/block}

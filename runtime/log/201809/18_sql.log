@@ -1,0 +1,14 @@
+---------------------------------------------------------------
+[ 2018-09-18T12:06:26+08:00 ] 127.0.0.1 GET /index.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.136008s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `product_saled` [ RunTime:0.068003s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `product_saled` WHERE  `is_deleted` = 0 LIMIT 1 [ RunTime:0.002000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.084005s ]
+[ sql ] [ SQL ] SELECT `name`,`value` FROM `system_config` [ RunTime:0.005000s ]
+---------------------------------------------------------------
+[ 2018-09-18T13:12:46+08:00 ] 127.0.0.1 GET /index.php/index/index/test
+[ sql ] [ DB ] CONNECT:[ UseTime:0.115006s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `product_saled` [ RunTime:0.072005s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `product_saled` WHERE  `is_deleted` = 0 LIMIT 1 [ RunTime:0.003000s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.066004s ]
+[ sql ] [ SQL ] SELECT `name`,`value` FROM `system_config` [ RunTime:0.002000s ]

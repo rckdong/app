@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+    <META HTTP-EQUIV="Expires" CONTENT="0">
+    <title>我的购车</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <link href="__STATIC__/webapp/css/mui.min.css" rel="stylesheet"/>
+    <script type="text/javascript" src="__STATIC__/webapp/js/jquery-1.11.0.js"></script>
+    <script src="__STATIC__/webapp/js/mui.js"></script>
+</head>
+<body>
+
+<style type="text/css">
+    body {
+        background: #FFFFFF;
+    }
+
+    header.mui-bar {
+        background-color: #242736;
+        color: #FFF;
+    }
+
+    header.mui-bar .mui-title {
+        color: #FFF;
+        font-size: 15px;
+    }
+
+    div.mui-card {
+        margin-bottom: 20px;
+        line-height: 1.5;
+        font-size: 12px;
+    }
+
+    div.mui-card p {
+        height: 10px;
+    }
+
+    h5.tit {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+
+    p.line {
+        text-align: center;
+        color: #898383
+    }
+
+</style>
+
+
+<a href="{:url('webapi/user/user_center')}">
+    <header id="mui-color" class="mui-bar mui-bar-nav">
+        <div class="mui-icon  mui-icon-left-nav mui-pull-left lotteryBack"></div>
+        <h1 class="mui-title">我的购车</h1>
+    </header>
+</a>
+
+
+<div class="mui-content" style="background: #FAFAFA; padding-top:60px;">
+    <div class="mui-content-padded" style="margin:10px 0px; ">
+        {foreach $res as $key=>$vo}
+        <div class="mui-card">
+            <div class="mui-card-content">
+                <div class="mui-card-content-inner">
+                    <h5 class="tit">合同编号：{$vo.contract_number}</h5>
+                    <p>合同类型：{if $vo.contract_number==1}定车合同{else/}订车合同{/if}</p>
+                    <p>车型:{$vo.car_model}-{$vo.car_color}</p>
+                    <p>订车日期:{$vo.book_time}</p>
+                    <p>状态：{if $vo.status==1}完成合同{else/}未完成合同{/if}</p>
+                </div>
+            </div>
+        </div>
+
+        {/foreach}
+
+        <p class="line">--我是有底线的--</p>
+    </div>
+
+    <!--<p id="empty" class="line">您当前还未缴费哦~</p>-->
+
+</div>
+
+<script type="text/javascript">
+    function pay() {
+        var data = [];
+        $('.check').each(function (index, item) {
+
+            var isChecked = $(item).is(':checked');
+
+            if (isChecked) {
+                data.push($(item).val());
+            }
+        });
+
+        if (!data.length) {
+            mui.toast('请选择要缴费的项目');
+            return;
+        }
+
+        console.log(data);
+    }
+
+</script>
+</body>
+</html>

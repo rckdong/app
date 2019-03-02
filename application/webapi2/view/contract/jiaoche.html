@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>交车信息</title>
+    {include file="public/header" /}
+</head>
+
+
+<body>
+
+<script type="text/javascript">!function (a) {
+    function b() {
+        var b = g.getBoundingClientRect().width;
+        b / c > 640 && (b = 640 * c), a.rem = b / 16, g.style.fontSize = a.rem + "px"
+    }
+
+    var c, d, e, f = a.document, g = f.documentElement, h = f.querySelector('meta[name="viewport"]'),
+        i = f.querySelector('meta[name="flexible"]');
+    if (h) {
+        console.warn("将根据已有的meta标签来设置缩放比例");
+        var j = h.getAttribute("content").match(/initial-scale=(["']?)([d.]+)1?/);
+        j && (d = parseFloat(j[2]), c = parseInt(1 / d))
+    } else if (i) {
+        var j = i.getAttribute("content").match(/initial-dpr=(["']?)([d.]+)1?/);
+        j && (c = parseFloat(j[2]), d = parseFloat((1 / c).toFixed(2)))
+    }
+    if (!c && !d) {
+        var k = (a.navigator.appVersion.match(/android/gi), a.navigator.appVersion.match(/iphone/gi)),
+            c = a.devicePixelRatio;
+        c = k ? c >= 3 ? 3 : c >= 2 ? 2 : 1 : 1, d = 1 / c
+    }
+    if (g.setAttribute("data-dpr", c), !h) if (h = f.createElement("meta"), h.setAttribute("name", "viewport"), h.setAttribute("content", "initial-scale=" + d + ", maximum-scale=" + d + ", minimum-scale=" + d + ", user-scalable=no"), g.firstElementChild) g.firstElementChild.appendChild(h); else {
+        var l = f.createElement("div");
+        l.appendChild(h), f.write(l.innerHTML)
+    }
+    a.dpr = c, a.addEventListener("resize", function () {
+        clearTimeout(e), e = setTimeout(b, 300)
+    }, !1), a.addEventListener("pageshow", function (a) {
+        a.persisted && (clearTimeout(e), e = setTimeout(b, 300))
+    }, !1), "complete" === f.readyState ? f.body.style.fontSize = 12 * c + "px" : f.addEventListener("DOMContentLoaded", function () {
+            f.body.setAttribute('fontSize', 12 * c + "px")
+        }, !1), b()
+}(window);
+/*app body*/
+(function (b) {
+    var a = b.body;
+    var e = navigator.userAgent;
+    /in_app_not_header/i.test(e) && (a.className += " app-body-no-header");
+    /in_app_not_footer/i.test(e) && (a.className += " app-body-no-footer");
+
+    function d() {
+        var g = location.search;
+        var f = new Object();
+        if (g.indexOf("?") != -1) {
+            var j = g.substr(1);
+            strs = j.split("&");
+            for (var h = 0; h < strs.length; h++) {
+                f[strs[h].split("=")[0]] = (strs[h].split("=")[1])
+            }
+        }
+        return f
+    }
+
+    var c = d();
+    if (c.APP_NAME && c.APP_NAME == "MLL_ADMIN") {
+        a.className += " app-body-no-toolbar"
+    }
+})(document);</script>
+
+<script type="text/javascript">
+    window._gaq = window._gaq || [];
+    window._ana = window._ana || [];
+    _ana.baseTime = new Date().getTime();
+    window.$$ = window.$$ || {};
+    $$.__IMG = 'http://img002.mllres.com' || 'http://image.meilele.com';
+    window._onReadyList = window._onReadyList || [];
+    window._$_ = function (id) {
+        return document.getElementById(id)
+    };
+</script>
+
+<header class="mui-bar mui-bar-nav">
+    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+    <h1 class="mui-title">交车信息</h1>
+</header>
+<style>
+    .mui-collapse-content p {
+        line-height: 1.2rem;
+    }
+
+    .show-contract {
+        width: 100%;
+        line-height: 3.0rem;
+        overflow: hidden;
+        margin-top: 20px;
+        padding-top: 5px;
+        background-color: rgb(244, 244, 244);
+        text-align: center;
+    }
+
+    .item_image {
+        position: relative;
+        width: 200px;
+        margin: 0 auto;
+    }
+
+    .item_image p {
+        position: absolute;
+        top: 72px;
+        left: 72px;
+        font-weight: bolder;
+        color: #9ea4b5;
+    }
+
+    .show-contract img {
+        width: 100%;
+    }
+
+    .list-badge {
+        width: 5px;
+        display: inline-block;
+        background-color: #75d0ff;
+        height: 12px;
+        margin-right: 5px;
+    }
+
+    .mui-icon-star {
+        color: #B5B5B5;
+        font-size: 30px;
+    }
+
+    .mui-icon-star-filled {
+        color: #FFB400;
+        font-size: 30px;
+    }
+
+    .view-star ul {
+        padding: 10px 0px;
+    }
+
+    .view-star li {
+        display: -webkit-box;
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .view-star li a {
+        -webkit-box-flex: 1;
+        display: block;
+        font-size: 15px;
+        line-height: 30px;
+        color: #000;
+    }
+
+    .view-star li div {
+        -webkit-box-flex: 2;
+        text-align: left;
+    }
+
+    #info {
+        padding: 20px 10px;
+    }
+
+    .okBtn {
+        border: none;
+        width: 250px;
+        height: 37px;
+        margin: 0 auto;
+        display: block;
+        margin-top: 30px;
+        margin-bottom: 30px
+    }
+</style>
+<div class="mui-content" style="max-width: 100%;margin: 0 auto; background: none;margin-top: 22px;">
+    <div class="mui-card">
+        <div class="mui-card-content">
+            <ul class="mui-table-view">
+                <li class="mui-table-view-cell mui-collapse mui-active">
+                    <a class="mui-navigate-right" href="#"><span class="list-badge"></span>车辆信息</a>
+                    <div class="mui-collapse-content">
+                        <p style="margin-bottom:0 !important">品牌：{$info.brand_name}</p>
+                        <p style="margin-bottom:0 !important">车型：{$info.car_model}</p>
+                        <p style="margin-bottom:0 !important">颜色：{$info.car_color}</p>
+                        <p style="margin-bottom:0 !important">选配：{$info.car_selection}</p>
+                        <p style="margin-bottom:0 !important">车架号：{$info.frame_number}</p>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse ">
+                    <a class="mui-navigate-right" href="#"><span class="list-badge"></span>车辆检查</a>
+                    <div class="mui-collapse-content">
+                        {if count($info['car_check_select']) > 0}
+                        {foreach $info.car_check_select as $key =>$val}
+                        {if $val['is_check'] == 1}
+                        <p style="margin-bottom:0 !important"><span class="mui-icon mui-icon-checkmarkempty"></span>{$val.value}
+                        </p>
+                        {else}
+                        <p style="margin-bottom:0 !important"><span class="mui-icon mui-icon-closeempty"></span>{$val.value}
+                        </p>
+                        {/if}
+                        {/foreach}
+                        {/if}
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#"><span class="list-badge"></span>车辆资料/手续</a>
+                    <div class="mui-collapse-content">
+                        {if count($info['process_check_select']) > 0}
+                        {foreach $info.process_check_select as $key =>$val1}
+                        {if $val1['is_check'] == 1}
+                        <p style="margin-bottom:0 !important"><span class="mui-icon mui-icon-checkmarkempty"></span>{$val1.value}
+                        </p>
+                        {else}
+                        <p style="margin-bottom:0 !important"><span class="mui-icon mui-icon-closeempty"></span>{$val1.value}
+                        </p>
+                        {/if}
+                        {/foreach}
+                        {/if}
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#"><span class="list-badge"></span>车辆精品</a>
+                    <div class="mui-collapse-content">
+                        {if count($info['product_check_select']) > 0}
+                        {foreach $info.product_check_select as $key =>$val2}
+                        {if $val2['is_check'] == 1}
+                        <p style="margin-bottom:0 !important"><span class="mui-icon mui-icon-checkmarkempty"></span>{$val2.value}
+                        </p>
+                        {else}
+                        <p style="margin-bottom:0 !important"><span class="mui-icon mui-icon-closeempty"></span>{$val2.value}
+                        </p>
+                        {/if}
+                        {/foreach}
+                        {/if}
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#"><span class="list-badge"></span>无上牌风险承诺书</a>
+                    <div class="mui-collapse-content">
+                        {if $info['is_checkin'] == 1}
+                        <p style="margin-bottom:0 !important"><span class="mui-icon mui-icon-checkmarkempty"></span>已上牌
+                        </p>
+                        {else}
+                        <p style="margin-bottom:0 !important"><span class="mui-icon mui-icon-closeempty"></span>未上牌</p>
+                        {/if}
+
+                        {if $info['is_mortgage'] == 1}
+                        <p style="margin-bottom:0 !important"><span class="mui-icon mui-icon-checkmarkempty"></span>已抵押
+                        </p>
+                        {else}
+                        <p style="margin-bottom:0 !important"><span class="mui-icon mui-icon-closeempty"></span>未抵押</p>
+                        {/if}
+                        <p style="margin-bottom:0 !important">
+                            {$info.ps|default=""}
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="view-star">
+
+        <ul class="mui-table-view">
+            <li class="star-li">
+                <a>满意度（10分为非常满意）</a>
+                <div class="icons">
+
+                </div>
+            </li>
+            <li class="star-li" style="margin-top: 18px;">
+                <a></a>
+                <div class="icons">
+                    <i data-index="1" class="mui-icon mui-icon-star-filled"></i>
+                    <i data-index="2" class="mui-icon mui-icon-star-filled"></i>
+                    <i data-index="3" class="mui-icon mui-icon-star-filled"></i>
+                    <i data-index="4" class="mui-icon mui-icon-star-filled"></i>
+                    <i data-index="5" class="mui-icon mui-icon-star-filled"></i>
+                    <i data-index="6" class="mui-icon mui-icon-star-filled"></i>
+                    <i data-index="7" class="mui-icon mui-icon-star-filled"></i>
+                    <i data-index="8" class="mui-icon mui-icon-star-filled"></i>
+                    <i data-index="9" class="mui-icon mui-icon-star-filled"></i>
+                    <i data-index="10" class="mui-icon mui-icon-star-filled"></i>
+                </div>
+            </li>
+        </ul>
+        <div id="info"></div>
+
+        <form class="mui-input-group test2">
+            <div class="mui-input-row" style="height: auto">
+                <textarea name="advices" id="advices" cols="30" rows="10" placeholder="请输入您的宝贵意见和建议"></textarea>
+            </div>
+            <input type="hidden" id="starScore" name="starScore" value="10">
+            <input type="hidden" id="contractId" name="contractId" value="{$info.contact_id}">
+            <button id="xyM" type="button" class="mui-btn mui-btn-primary okBtn" onclick="javascript:void (0)">确认
+            </button>
+        </form>
+    </div>
+</div>
+
+<footer class="mll-footer" style="width: 100%;bottom: 0px;left: 0px;margin-top: 50px;">
+    <div class="mll-footer-icp">版权所有：粤ICP备08008334号</div>
+</footer>
+
+<script>
+    mui.init();
+    mui('.icons').on('click', 'i', function () {
+        var index = parseInt(this.getAttribute("data-index"));//获取当前元素的索引值
+        var parent = this.parentNode;//获取当前元素的父节点
+        var children = parent.children;//获取父节点下所有子元素
+        if (this.classList.contains("mui-icon-star")) {
+            //判断当前节点列表中是否含有.mui-icon-star元素
+            for (var i = 0; i < index; i++) {
+                //亮星
+                children[i].classList.remove('mui-icon-star');
+                children[i].classList.add('mui-icon-star-filled');
+            }
+        } else {
+            //重置已经亮星的元素
+            for (var i = index; i < 10; i++) {
+                children[i].classList.add('mui-icon-star')
+                children[i].classList.remove('mui-icon-star-filled')
+            }
+
+        }
+
+        document.getElementById("info").innerHTML = parent.previousElementSibling.innerText + "满意度：" + index + "星好评";
+
+        document.getElementById("starScore").value = index;
+    })
+
+    $("#xyM").click(function () {
+        var advice = $("#advices").val();  //意见建议
+        var starScore = $("#starScore").val();      //评分
+        var contractId = $("#contractId").val();        //合同ID
+        var _this = this;
+
+        if ($.trim(advice) == '') {
+            mui.toast('请输入意见建议');
+            return;
+        }
+
+        if ($.trim(starScore) == 0) {
+            mui.toast('请选择评分');
+            return;
+        }
+        if ($(_this).hasClass("mui-disabled")) {
+            return false;
+        }
+
+        $(_this).text('正在提交....').css({"background": '#404040'});
+        $(_this).addClass("mui-disabled");
+        //提交表单
+        var data = {
+            contact_id: contractId,
+            star: starScore,
+            advice: advice
+        };
+        var updateForm = "{:url('webapi/contract/do_advice')}";
+        $.post(updateForm, data, function (res) {
+            mui.toast(res.msg);
+            $(_this).text('确认').css({"background": '#3377FF'});
+            if (res.status == 200) {
+                var pay_url = "{:url('webapi/contract/get_pass_number')}?contract_id=" + data.contact_id;
+                window.location.href = pay_url;
+            } else {
+                $(_this).removeClass("mui-disabled");
+            }
+        });
+        return;
+    })
+</script>
+</body>
+</html>

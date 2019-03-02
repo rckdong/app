@@ -1,0 +1,131 @@
+<form class="layui-form layui-box modal-form-box" action="{:request()->url()}" data-auto="true" method="post">
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">ID</label>
+        <div class="layui-input-block">
+            <p style="height: 36px;line-height: 36px;"> {$vo.id|default="0"}</p>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户账号</label>
+        <div class="layui-input-block">
+            {if $vo and isset($vo.username)}
+            <input readonly="readonly" disabled="disabled" name="username" value='{$vo.username|default=""}' required="required" title="请输入用户名称" placeholder="请输入用户名称" class="layui-input layui-bg-gray">
+            {else}
+            <input name="username" value='{$vo.username|default=""}' required="required" pattern="^.{4,}$" title="请输入用户名称" placeholder="请输入4位及以上字符用户名称" class="layui-input">
+            {/if}
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">姓名</label>
+        <div class="layui-input-block">
+            <input autofocus name="name" value='{$vo.name|default=""}' title="请输入姓名" placeholder="请输入姓名" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">
+            头像
+        </label>
+        <div class='layui-input-block'>
+            <img data-tips-image style="height:auto;max-height:128px;min-width:128px" src="{$vo.header|default=''}"/>
+            <input type="hidden" name="header" onchange="$(this).prev('img').attr('src', this.value)" value="{$vo.header|default=''}" class="layui-input">
+            <a class="btn btn-link" data-file="one" data-uptype="local" data-type="png,jpeg,gif,jpg" data-field="header">上传图片</a>
+        </div>
+    </div>
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">
+            身份证证件
+        </label>
+        <div class='layui-input-block'>
+            <img data-tips-image style="height:auto;max-height:128px;min-width:128px" src="{$vo.id_pic|default=''}"/>
+            <input type="hidden" name="id_pic" onchange="$(this).prev('img').attr('src', this.value)" value="{$vo.id_pic|default=''}" class="layui-input">
+            <a class="btn btn-link" data-file="one" data-uptype="local" data-type="png,jpeg,gif,jpg" data-field="id_pic">上传图片</a>
+        </div>
+    </div>
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">联系手机</label>
+        <div class="layui-input-block">
+            <input type="tel" autofocus name="phone" value='{$vo.phone|default=""}' pattern="^1[3-9][0-9]{9}$" title="请输入联系手机" placeholder="请输入联系手机" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">联系邮箱</label>
+        <div class="layui-input-block">
+            <input name="mail" pattern="^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$" value='{$vo.mail|default=""}' title="请输入联系邮箱" placeholder="请输入联系邮箱" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">身份证</label>
+        <div class="layui-input-block">
+            <input autofocus name="idcard" value='{$vo.idcard|default=""}' title="请输入身份证" placeholder="请输入身份证" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">民族</label>
+        <div class="layui-input-block">
+            <input autofocus name="mingzu" value='{$vo.mingzu|default=""}' title="请输入民族" placeholder="请输入民族" class="layui-input">
+        </div>
+    </div>
+
+    {if isset($authorizes)}
+    <div class="layui-form-item">
+        <label class="layui-form-label">访问授权</label>
+        <div class="layui-input-block">
+            {foreach $authorizes as $authorize}
+            <label class="think-checkbox">
+                <!--{if in_array($authorize['id'],$vo['authorize'])}-->
+                <input type="checkbox" checked name="authorize[]" value="{$authorize.id}" lay-ignore> {$authorize.title}
+                <!--{else}-->
+                <input type="checkbox" name="authorize[]" value="{$authorize.id}" lay-ignore> {$authorize.title}
+                <!--{/if}-->
+            </label>
+            {/foreach}
+            {if empty($authorizes)}<span class="color-desc" style="line-height:36px">未配置权限</span>{/if}
+        </div>
+    </div>
+    {/if}
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">当前余额</label>
+        <div class="layui-input-block">
+            <p style="height: 36px;line-height: 36px;"> ￥{$vo.money|default="0.00"}</p>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">用户描述</label>
+        <div class="layui-input-block">
+            <textarea placeholder="请输入用户描述" title="请输入用户描述" class="layui-textarea" name="desc">{$vo.desc|default=""}</textarea>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">
+            体检照片
+        </label>
+        <div class='layui-input-block'>
+            <img data-tips-image style="height:auto;max-height:128px;min-width:128px" src="{$vo.tijian|default=''}"/>
+            <input type="hidden" name="tijian" onchange="$(this).prev('img').attr('src', this.value)" value="{$vo.tijian|default=''}" class="layui-input">
+            <a class="btn btn-link" data-file="one" data-uptype="local" data-type="png,jpeg,gif,jpg" data-field="tijian">上传图片</a>
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="layui-form-item text-center">
+        {if isset($vo['id'])}<input type='hidden' value='{$vo.id}' name='id'>{/if}
+        <button class="layui-btn" type='submit'>保存数据</button>
+        <button class="layui-btn layui-btn-danger" type='button' data-confirm="确定要取消编辑吗？" data-close>取消编辑</button>
+    </div>
+    <script>window.form.render();</script>
+</form>

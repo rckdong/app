@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>查看预算审核</title>
+    {include file="public/header" /}
+</head>
+
+
+<body>
+
+<script type="text/javascript">!function (a) {
+    function b() {
+        var b = g.getBoundingClientRect().width;
+        b / c > 640 && (b = 640 * c), a.rem = b / 16, g.style.fontSize = a.rem + "px"
+    }
+
+    var c, d, e, f = a.document, g = f.documentElement, h = f.querySelector('meta[name="viewport"]'),
+        i = f.querySelector('meta[name="flexible"]');
+    if (h) {
+        console.warn("将根据已有的meta标签来设置缩放比例");
+        var j = h.getAttribute("content").match(/initial-scale=(["']?)([d.]+)1?/);
+        j && (d = parseFloat(j[2]), c = parseInt(1 / d))
+    } else if (i) {
+        var j = i.getAttribute("content").match(/initial-dpr=(["']?)([d.]+)1?/);
+        j && (c = parseFloat(j[2]), d = parseFloat((1 / c).toFixed(2)))
+    }
+    if (!c && !d) {
+        var k = (a.navigator.appVersion.match(/android/gi), a.navigator.appVersion.match(/iphone/gi)),
+            c = a.devicePixelRatio;
+        c = k ? c >= 3 ? 3 : c >= 2 ? 2 : 1 : 1, d = 1 / c
+    }
+    if (g.setAttribute("data-dpr", c), !h) if (h = f.createElement("meta"), h.setAttribute("name", "viewport"), h.setAttribute("content", "initial-scale=" + d + ", maximum-scale=" + d + ", minimum-scale=" + d + ", user-scalable=no"), g.firstElementChild) g.firstElementChild.appendChild(h); else {
+        var l = f.createElement("div");
+        l.appendChild(h), f.write(l.innerHTML)
+    }
+    a.dpr = c, a.addEventListener("resize", function () {
+        clearTimeout(e), e = setTimeout(b, 300)
+    }, !1), a.addEventListener("pageshow", function (a) {
+        a.persisted && (clearTimeout(e), e = setTimeout(b, 300))
+    }, !1), "complete" === f.readyState ? f.body.style.fontSize = 12 * c + "px" : f.addEventListener("DOMContentLoaded", function () {
+            f.body.setAttribute('fontSize', 12 * c + "px")
+        }, !1), b()
+}(window);
+/*app body*/
+(function (b) {
+    var a = b.body;
+    var e = navigator.userAgent;
+    /in_app_not_header/i.test(e) && (a.className += " app-body-no-header");
+    /in_app_not_footer/i.test(e) && (a.className += " app-body-no-footer");
+
+    function d() {
+        var g = location.search;
+        var f = new Object();
+        if (g.indexOf("?") != -1) {
+            var j = g.substr(1);
+            strs = j.split("&");
+            for (var h = 0; h < strs.length; h++) {
+                f[strs[h].split("=")[0]] = (strs[h].split("=")[1])
+            }
+        }
+        return f
+    }
+
+    var c = d();
+    if (c.APP_NAME && c.APP_NAME == "MLL_ADMIN") {
+        a.className += " app-body-no-toolbar"
+    }
+})(document);</script>
+
+<style>
+    *{
+        color: #333;
+    }
+    .menu {
+        width: 100%;
+        clear: both;
+        padding-top: 5px;
+        /* background: rgba(0,0,0,0.2); */
+        background-color: rgba(255, 255, 255, .5);
+        overflow: hidden;
+    }
+
+    .menu-item {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .menu li {
+        float: left;
+        width: 20%;
+        line-height: 40px;
+        text-align: center;
+    }
+
+    .goto-pay {
+        display: block;
+        width: 100%;
+        text-align: center;
+        height: 48px;
+        line-height: 48px;
+        background-color: #75d0ff;
+        color: #fff;
+        font-size: 18px;
+    }
+
+    .mui-card{
+        margin: 10px 0;
+    }
+    .mui-card-media p{
+        color: #999;
+    }
+    .approval_list h1{
+        text-align: center;
+        border-bottom: 1px solid #c8c7cc;
+        padding: 10px 0;
+        font-weight: normal;
+    }
+    .approval_list h1 span{
+        font-size: 14px;
+    }
+    .approval_list p{
+        color: #999;
+        line-height: 1.2rem;
+        padding: 0 10px;
+    }
+    .mui-card-header:after{
+        background-color: #fff;
+    }
+    .mui-input-group .mui-input-row:after{
+        background-color:#fff;
+    }
+</style>
+
+<div class="mui-content">
+    <div class="mui-card">
+        <!--页眉，放置标题-->
+        <div class="mui-card-header  mui-card-media">
+            <div class="mui-media-body" style="margin-left:0;">
+                审批
+                <p>{$info.create_at}</p>
+            </div>
+        </div>
+        <!--内容区-->
+        <div class="mui-card-content">
+            <div class="approval_list">
+                <h1>{$vo.transaction_price} <span>元</span></h1>
+                <p style="padding-top: 10px;"><span>合同编号：</span>{$vo.contract_number}</p>
+                <p><span>品牌：</span>{$vo.brand_name}</p>
+                <p><span>车型：</span>{$vo.car_model}</p>
+                <p><span>颜色：</span>{$vo.car_color}</p>
+                <p><span>下单日期：</span>{$vo.book_time}</p>
+                <p><span>指导价：</span>{$vo.guidance_price}</p>
+
+                <p><span>开票价：</span>{$info.ticket_price}</p>
+                <p><span>车辆采购成本：</span>{$info.purchasing_cost}</p>
+                <p><span>运输成本：</span>{$info.transportation_cost}</p>
+                <p><span>购置税成本：</span>{$info.purchase_tax_cost}</p>
+                <p><span>商业险：</span>{$info.commercial_insurance}</p>
+                <p><span>交强/车船：</span>{$info.compulsory_insurance}</p>
+                <p><span>质保：</span>{$info.quality_assurance}</p>
+                <p><span>店保：</span>{$info.shop_insurance}</p>
+                <p><span>上牌费：</span>{$info.premium}</p>
+                <p><span>精品成本：</span>{$info.quality_cost}</p>
+                <p><span>刷卡成本：</span>{$info.card_cost}</p>
+                <p><span>垫资成本：</span>{$info.capital_cost}</p>
+                <p><span>其他成本：</span>{$info.other_cost}</p>
+                <p><span>财务总收入：</span>{$info.total_income}</p>
+                <p><span>客户满意度100分：</span>{$info.satisfaction}</p>
+                <p><span>结算类型：</span>{$info.type_name}</p>
+                <p><span>单台成本：</span>{$info.single_cost}</p>
+                <p><span>公司毛利润：</span>{$info.company_gross_profit}</p>
+                <p><span>销售毛利润：</span>{$info.sales_gross_profit}</p>
+                <p><span>公司净利润：</span>{$info.company_net_profit}</p>
+                <p><span>销售净利润：</span>{$info.sales_net_profit}</p>
+                <p><span>公司应收总成本：</span>{$info.company_cost}</p>
+                <p><span>客户满意度扣分：</span>{$info.deduction}</p>
+            </div>
+        </div>
+        <!--页脚，放置补充信息或支持的操作-->
+        <div class="mui-card-footer">
+            <div class="mui-content" style="width: 100%">
+
+                <div class="mui-content-padded" style="margin: 0;width: 100%;">
+                    <form class="mui-input-group test2">
+
+                        <div class="mui-input-row mui-table-view-radio">
+                            <label style="width: 25%">请选择</label>
+
+                            <div style="display: inline-block;" class="mui-input-row mui-radio check_btn">
+                                <input name="is_pass" checked="checked" value="1" type="radio">
+                                <label style="padding-right: 50px;">通过</label>
+                            </div>
+
+                            <div style="display: inline-block;" class="mui-input-row mui-radio check_btn">
+                                <input name="is_pass" value="2" type="radio">
+                                <label style="padding-right: 50px;">不通过</label>
+                            </div>
+                        </div>
+
+                        <div class="mui-input-row" id="falseReason" style="display: none">
+                            <label style="width: 25%">不通过的原因</label>
+                            <input type="text" class="mui-input-clear" id="false_reason" placeholder="请输入不通过的原因" value="">
+                        </div>
+                        <input type="hidden" id="contacts_id" name="contacts_id" value="{$info.contacts_id}">
+                        <input type="hidden" id="dubget_id" name="dubget_id" value="{$id}">
+                        <button id="xyM" type="button" style="background: #3377ff;width: 100%" class="mui-btn mui-btn-primary okBtn" onclick="javascript:void (0)">确认</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="mll-footer" style="width: 100%;bottom: 0px;left: 0px;margin-top: 50px;">
+    <div class="mll-footer-icp">版权所有：粤ICP备08008334号</div>
+</footer>
+
+<!--<div class="mll-footer" style="position:absolute;width: 100%;bottom: 0px;left: 0px;">-->
+    <!--<a href="#" class="goto-pay">去付款</a>-->
+<!--</div>-->
+
+<script>
+    (function ($, doc) {
+        $.init();
+        $.ready(function () {
+            /**
+             * 获取对象属性的值
+             * 主要用于过滤三级联动中，可能出现的最低级的数据不存在的情况，实际开发中需要注意这一点；
+             * @param {Object} obj 对象
+             * @param {String} param 属性名
+             */
+            var _getParam = function (obj, param) {
+                return obj[param] || '';
+            };
+
+        });
+
+
+    })(mui, document);
+
+    $("input[name='is_pass']:radio").click(function(){
+//        alert("您是..." + $(this).val());
+        if($(this).val() == 2){
+            $("#falseReason").show();
+        }else {
+            $("#falseReason").hide();
+            $("#falseReason").val("");
+        }
+    });
+
+    $("#xyM").on("click",function () {
+        var _this = this;
+        if($(_this).hasClass("mui-disabled")){
+            mui.toast('请勿重复操作');
+            return false;
+        }
+        var is_pass = $("input[name='is_pass']:checked").val();
+        var false_reason = $("#false_reason").val();
+        var contacts_id = $("#contacts_id").val();
+        var dubget_id = $("#dubget_id").val();
+
+        if(is_pass ==2 && false_reason == ''){
+            mui.toast('请输入不通过的原因');
+            return;
+        }
+
+        if(!contacts_id){
+            mui.toast('信息错误');
+            return;
+        }
+
+        var data = {
+            contacts_id: contacts_id,
+            id: dubget_id,
+            status: is_pass,
+            false_reason: false_reason
+        };
+        var urlForm = "{:url('manage/user/update_confirm')}";
+        $("#xyM").addClass("mui-disabled");
+        $.post(urlForm, data, function (res) {
+            console.log(res);
+            mui.toast(res.message);
+            if (res.status == 200) {
+                var pay_url = "{:url('manage/user/get_approval_list')}";
+                window.location.href = pay_url;
+            }
+        });
+        return;
+    });
+
+
+</script>
+
+</body>
+</html>

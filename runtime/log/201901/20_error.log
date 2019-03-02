@@ -1,0 +1,24 @@
+---------------------------------------------------------------
+[ 2019-01-20T12:21:58+08:00 ] 127.0.0.1 GET /
+[ error ] [8]未定义变量: wx_options[E:\car_subsystem\runtime\temp\b994064b64d5fef3995b2b657f5ee859.php:127]
+---------------------------------------------------------------
+[ 2019-01-20T12:22:05+08:00 ] 127.0.0.1 GET /index.php
+[ error ] [8]未定义变量: wx_options[E:\car_subsystem\runtime\temp\b994064b64d5fef3995b2b657f5ee859.php:127]
+---------------------------------------------------------------
+[ 2019-01-20T12:22:11+08:00 ] 127.0.0.1 GET /index.php/admin
+[ error ] [64]Cannot redeclare class app\webapi\controller\Address[E:\car_subsystem\application\webapi2\controller\Address.php:61]
+---------------------------------------------------------------
+[ 2019-01-20T12:25:12+08:00 ] 127.0.0.1 GET /index.php/index/word/testimage
+[ error ] [0]image file not exist[E:\car_subsystem\vendor\topthink\think-image\src\Image.php:102]
+---------------------------------------------------------------
+[ 2019-01-20T12:26:40+08:00 ] 127.0.0.1 GET /index.php/index/word/testimage
+[ error ] [0]image file not exist[E:\car_subsystem\vendor\topthink\think-image\src\Image.php:102]
+---------------------------------------------------------------
+[ 2019-01-20T12:26:42+08:00 ] 127.0.0.1 GET /index.php/index/word/testimage
+[ error ] [0]image file not exist[E:\car_subsystem\vendor\topthink\think-image\src\Image.php:102]
+---------------------------------------------------------------
+[ 2019-01-20T12:58:34+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ error ] [0]不存在的字体文件：[E:\car_subsystem\vendor\topthink\think-image\src\Image.php:489]
+---------------------------------------------------------------
+[ 2019-01-20T13:29:43+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ error ] [8]未定义数组索引: pay_type_desc[E:\car_subsystem\application\index\controller\Word.php:103]

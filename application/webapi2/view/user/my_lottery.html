@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+    <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
+    <META HTTP-EQUIV="Expires" CONTENT="0">
+    <title>我的奖品</title>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <link href="__STATIC__/webapp/css/mui.min.css" rel="stylesheet"/>
+    <script type="text/javascript" src="__STATIC__/webapp/js/jquery-1.11.0.js"></script>
+    <script src="__STATIC__/webapp/js/mui.js"></script>
+    {include file="public/weixin_sdk" /}
+</head>
+<body>
+
+<style type="text/css">
+    ul, li {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        background: #F5F6F6;
+    }
+
+    header.mui-bar {
+        background-color: #242736;
+        color: #FFF;
+    }
+
+    header.mui-bar .mui-title {
+        color: #FFF;
+        font-size: 15px;
+    }
+
+    div#lottery_list {
+        width: 95%;;
+        margin: 0 auto;
+        margin-top: 46px;
+        padding-top: 20px;
+        min-height: 500px;
+    }
+
+    div#lottery_list ul li {
+        height: 102px;
+        width: 100%;
+        background: #FFFFFF;
+        margin-bottom: 25px;
+        border-radius: 10px;
+        -ms-filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000') ";  /* For IE 8 */
+        filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#000000'); /* For IE 5.5 - 7 */
+        -moz-box-shadow: 2px 2px 10px #909090; /* for firefox */
+        -webkit-box-shadow: 2px 2px 10px #909090; /* for safari or chrome */
+        box-shadow: 2px 2px 10px #909090;
+        padding-top: 10px;
+        position: relative;
+
+    }
+
+    div#lottery_list ul li div.boxImg {
+        width: 25%;
+        height: 74px;
+        border-radius: 5px;
+        overflow: hidden;
+        float: left;
+        margin: 5px;
+    }
+
+    div#lottery_list ul li div.boxImg img {
+        display: block;
+        height: 100%;
+    }
+
+    div.boxTxt {
+        float: left;
+        width: 46%;
+        overflow: hidden;
+        height: 100%;
+        padding-left: 5px;
+        color: #404040;
+        font-size: 12px;
+        line-height: 1.3;
+        font-size: 12px;
+        padding-top: 2px;
+    }
+
+    div.boxTxt p {
+        text-align: left;
+    }
+
+    div.boxTxt h5 {
+        color: #343434;
+        font-weight: 100;
+        padding-top: 10px;
+        font-size: 15px;
+    }
+
+    div.boxBtn {
+        position: absolute;
+        right: 0;
+        width: 26%;
+        height: 100%;
+        text-align: center;
+        line-height: 1;
+        padding-top: 10px;
+    }
+
+    div.boxBtn p {
+        font-size: 12px;
+        color: #868686
+    }
+
+    div.boxBtn a {
+        background: #F85021;
+        width: 70px;
+        height: 27px;
+        color: #FFF;
+        display: block;
+        margin: 0 auto;
+        line-height: 16px;
+        border-radius: 3px;
+        padding: 5px;
+
+    }
+
+    p {
+        text-align: center;
+        color: #898383
+    }
+</style>
+
+<a href="{:url('webapi/user/user_center')}">
+    <header id="mui-color" class="mui-bar mui-bar-nav">
+        <div class="mui-icon  mui-icon-left-nav mui-pull-left lotteryBack"></div>
+        <h1 class="mui-title">我的卡券包</h1>
+    </header>
+</a>
+
+<div id="lottery_list">
+
+        <?php
+         if(count($my_pool)==0){
+
+         ?>
+
+        <p id="empty" class="line">您当前未获得任何奖品哦~</p>
+
+        <?php
+         }else{
+          ?>
+    <ul>
+
+    {foreach $my_pool as $key=>$vo}
+        <li>
+            <div class="boxImg">
+                <img src="{$vo.img}"/>
+            </div>
+
+            <div class="boxTxt">
+                <h5>{$vo.title}</h5>
+                <p>{$vo.desc}</p>
+            </div>
+
+            <div class="boxBtn">
+                <p>{$vo.date}</p>
+                <a target="_blank" href="{$vo.href}">点击领取</a>
+            </div>
+
+        </li>
+        {/foreach}
+        <p class="line">--我是有底线的--</p>
+    </ul>
+        <?php
+         }
+        ?>
+
+
+
+
+
+
+</div>
+
+
+{include file="public/weixin_share" /}
+
+</body>
+</html>

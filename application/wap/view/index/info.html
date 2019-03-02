@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>【{$vo.goods_title}】-{$vo.goods_prices}万起- {:sysconf('wap_title')}</title>
+    <meta name="keywords" content="{$vo.goods_title},报价,价格">
+    <meta name="description" content="{$vo.goods_title},报价,价格,{:sysconf('wap_description')}">
+
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="no-cache" http-equiv="pragma">
+    <meta content="no-cache" http-equiv="cache-control">
+    <link href="__STATIC__/index_files/cheshangle.css" rel="stylesheet" type="text/css">
+    <link href="__STATIC__/index_files/cheoo.css" rel="stylesheet" type="text/css">
+    <link href="__STATIC__/webapp/css/mui.min.css" rel="stylesheet"/>
+
+    <script src="__STATIC__/index_files/jquery-1.8.3.min.js"></script>
+    <script src="__STATIC__/webapp/js/mui.js"></script>
+    <script src="__STATIC__/index_files/cheshangle.js"></script>
+    <script src="__STATIC__/index_files/shencong.js"></script>
+
+
+    <link href="__STATIC__/webapp/js/picker_mui/picker.css" rel="stylesheet"/>
+    <link href="__STATIC__/webapp/js/picker_mui/mui.picker.min.css" rel="stylesheet"/>
+
+    <script src="__STATIC__/webapp/js/picker_mui/mui.picker.js"></script>
+    <script src="__STATIC__/webapp/js/picker_mui/mui.poppicker.js"></script>
+    <script src="__STATIC__/webapp/js/picker_mui/mui.picker.min.js"></script>
+    {include file="public/baidu_hm" /}
+    <style>
+        .alpha {
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .alpha body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .M_price-tips {
+            width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+            background-color: #f7f5f5;
+            /*border: 1px solid #e2dcdc;*/
+        }
+
+        .M_price-tips li {
+            width: 50%;
+            float: left;
+            overflow: hidden;
+            line-height: 36px;
+            height: 36px;
+            font-size: 14px;
+            vertical-align: middle;
+            color: #8a8a8a;
+        }
+
+        .M_price-tips img {
+            height: 12px;
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+
+        .btn-select-text {
+            font-size: 14px;
+            color: #8a8a8a;
+        }
+        @media screen and (min-width: 750px){
+            body{
+                max-width: 640px;
+                margin: 0 auto;
+            }
+            .M_price-zdy img{
+                max-width: 620px !important;
+            }
+            .M_header{
+                max-width: 640px !important;
+            }
+            .M_price-bottom{
+                width: 640px;
+                left: auto !important;
+                right: auto !important;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+<div class="M_scrollHidden">
+
+    <div class="black_mask" style="display:none;" id="zhezhao"></div>
+
+    <!-- 头部 begin -->
+    <!-- 下载提示 begin -->
+    <!-- 头部 begin -->
+    <div class="M-h">
+
+        <header class="M_header M_posf">
+            <a href="javascript:history.back();" class="left"><i class="M_icon M_icon_arrow-lw"></i></a>
+            <a href="javascript:;" class="right" id="M_more"><i class="M_icon M_icon_nav"></i></a>
+            <a href="javascript:back();" class="title"><i class="M_icon M_icon_logo"></i>报价详情</a>
+        </header>
+
+    </div>
+
+    <!-- 导航 begin -->
+    <div class="M_header_nav" id="M_header_nav">
+
+        <ul>
+            <li><a href="{:url('wap/index/index')}">首页</a></li>
+            <li><a href="/index.php/wap/index/get_list">全部车型</a></li>
+            <li><a href="/index.php/wap/index/has_sale">已售车型</a></li>
+            <li><a href="{:url('wap/index/about')}">关于我们</a></li>
+        </ul>
+    </div>
+    <div class="M_main">
+        <div class="M_main_con pd76">
+
+            <div class="M_price-title M_clearfix">
+                <!--<div class="img M_price-imgBox" >-->
+                <!--<a href="{:url('wap/index/show_pic')}?id={$vo.id}">-->
+                <!--<img class="img-position" _src="{$vo.goods_logo}" alt="">-->
+                <!--</a>-->
+                <!--<span>多张张图</span>-->
+                <!--<span class="time">{$vo.create_at|time|date="m-d"}</span>-->
+                <!--</div>-->
+                <h1 style=" display: block; width: 70%; float: left;padding: 15px 6px 0 12px;line-height: 1.8rem">
+                    {$vo.pid_cate_title|default=''} {$vo.cate_title} {$vo.goods_title}</h1>
+                <p style="display: block;text-align:right;float: right;padding: 20px 12px 0px 0px;color: #fe4b00;font-size: 16px;">
+                    <strong>{$vo.goods_prices} 万起</strong><br/>
+                    <em style="color: #a5a5a5;text-decoration:line-through"> {$vo.guid_price}万</em>
+                </p>
+                <p style="clear: both">
+                    {foreach $vo.goods_tag as $tag}
+                    {if $tag neq ''}<span class="M_br3">{$tag}</span>{/if}
+                    {/foreach}
+                </p>
+                <!--<p class="price" style="clear: both;border: none;float: right;padding-top: 0px;margin-top: -30px;">-->
+                <!--<em style="color: #a5a5a5;text-decoration:line-through"> {$vo.guid_price}万</em>-->
+                <!--</p>-->
+            </div>
+
+            <div class="M_price-title M_clearfix">
+                <ul class="M_price-tips">
+                    <li>
+                        <img src="http://chexinyuan.com/static/images/icon_true.png" alt="">全国4S店最低报价
+                    </li>
+                    <li>
+                        <img src="http://chexinyuan.com/static/images/icon_true.png" alt="">全国联保，三包服务
+                    </li>
+                    <li>
+                        <img src="http://chexinyuan.com/static/images/icon_true.png" alt="">首付低至1成起
+                    </li>
+                    <li>
+                        <img src="http://chexinyuan.com/static/images/icon_true.png" alt="">银行贷款年限3-5年
+                    </li>
+                </ul>
+            </div>
+
+            <div class="M_price-title M_clearfix">
+                <button id='showUserPicker2' class="mui-btn mui-btn-block btn-select-text" type='button'
+                        style="text-indent: 10px;text-align: left;margin-bottom:0px;border:1px solid #f1f1f1">提车地址 ：深圳
+                </button>
+            </div>
+
+            <div class="M_price-title M_clearfix">
+                <button id='showUserPicker' data-pay_type_pick="" class="mui-btn mui-btn-block btn-select-text"
+                        type='button'
+                        style="text-indent: 10px;text-align: left;margin-bottom:0px;border:1px solid #f1f1f1">付款方式 ：请选择
+                </button>
+            </div>
+
+            <div class="M_price-title M_clearfix">
+                <button id='showUserPicker3' data-color_pick="" class="mui-btn mui-btn-block btn-select-text"
+                        type='button'
+                        style="text-indent: 10px;text-align: left;margin-bottom:0px;border:1px solid #f1f1f1">选择颜色 ：请选择
+                </button>
+            </div>
+
+            {if $vo['goods_desc'] != ''}
+            <div class="M_price-info M_clearfix M_mt12">
+
+                <h2><i></i>配置</h2>
+
+                <p class="tip">
+                    {$vo.goods_desc}
+                </p>
+
+            </div>
+            {/if}
+
+
+            <div class="M_price-zdy M_clearfix M_mt12">
+                {$vo.goods_content|raw}
+                <p>
+                    <img border="0" src="http://chexinyuan.com/static/images/11.jpg" style="max-width:500px"
+                         title="image">
+                    <img border="0" src="http://chexinyuan.com/static/images/33.jpg" style="max-width:500px"
+                         title="image">
+                    <img border="0" src="http://chexinyuan.com/static/images/22.jpg" style="max-width:500px"
+                         title="image">
+                    <img border="0" src="http://chexinyuan.com/static/images/44.jpg" style="max-width:500px"
+                         title="image">
+                </p>
+            </div>
+
+            <!--<div class="M_price-bottom2">-->
+            <!--<a href="{:url('wap/index/contact')}?id={$vo.id}" class="M_tel M_btn_yellow M_br3" >咨询底价</a>-->
+            <!--</div>-->
+
+            <div class="M_price-bottom">
+
+                <a href="javascript:void(0);" id="run_contact" class="M_tel M_btn_yellow M_br3"
+                   style="right: 126px;background: #758ea7;border: 1px solid #758ea7;border-radius: 0">
+                    <!--<i class="M_icon M_icon_tel-y M_mr5"></i>-->
+                    询问底价</a>
+
+                <a href="javascript:showPhone(111564);" class="M_tel M_btn_yellow M_br3" id="car_info_button"
+                   style="border-radius: 0">
+                    <i class="M_icon M_icon_tel-y M_mr5"></i>
+                    立即咨询</a>
+
+                <a href="{:url('wap/index/index')}">
+                    <div class="img"><img src="{:sysconf('company_image')}" alt=""
+                                          style="width: 34px;height: 34px;"></div>
+                    <!--<div class="title">{:sysconf("company_name")}<i class="M_icon M_icon_zhan M_ml5"></i></div>-->
+
+                    <div class="info" style="padding-top: 23px;">进入主页</div>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    <style>
+
+        .M_pop_tel2 {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            z-index: 1000;
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box; /* Firefox */
+            -webkit-box-sizing: border-box; /* Safari */
+            display: none;
+        }
+
+        .M_pop_tel2 .list {
+            background: #FFFFFF;
+        }
+
+        .M_pop_tel2 .list li {
+            height: 44px;
+            line-height: 44px;
+            border-bottom: 1px solid #E4E4E4;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .M_pop_tel2 .list li a {
+            display: block;
+            color: #1e64a1;
+        }
+
+        .M_pop_tel .list li:last-child {
+            border-bottom: none;
+        }
+
+        .M_pop_tel2 .close {
+            margin-top: 10px;
+            height: 44px;
+            line-height: 44px;
+            background: #FFFFFF;
+            font-size: 16px;
+            color: #2e3032;
+            text-align: center;
+            display: block;
+        }
+
+        .select_wai, .select_nei {
+            width: 100%;
+            overflow: hidden;
+            background-color: #fff;
+        }
+
+        .select-span {
+            height: 50px;
+            line-height: 50px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .neishi, .neishi2 {
+            width: 100%;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .neishi ul li, .neishi2 ul li {
+            width: 25px;
+            height: 25px;
+            display: block;
+            float: left;
+            margin-right: 10px;
+            margin-bottom: 16px;
+        }
+
+        .neishi span, .neishi2 span {
+            display: block;
+            width: 25px;
+            height: 25px;
+            border: 1px solid #c0bfc4;
+            border-radius: 8px;
+        }
+
+        .neishi .span-bai {
+            background-color: #fff;
+        }
+
+        .neishi .span-yin {
+            background-color: #bebebe;
+        }
+
+        .neishi .span-hei, .neishi2 .span-hei {
+            background-color: #000000;
+        }
+
+        .neishi .span-hui {
+            background-color: #9e989a;
+        }
+
+        .neishi .span-hong {
+            background-color: #ff1422;
+        }
+
+        .neishi .span-lan {
+            background-color: #0000ff;
+        }
+
+        .neishi .span-jin {
+            background-color: #ffe16d;
+        }
+
+        .neishi .span-zong {
+            background-color: #6e3d1c;
+        }
+
+        .neishi .span-lv {
+            background-color: #00ff26;
+        }
+
+        .neishi .span-huang {
+            background-color: #fff80f;
+        }
+
+        .neishi .span-cheng {
+            background-color: #ff8900;
+        }
+
+        .neishi2 .span-mihei {
+            background-color: #bbaa98;
+        }
+
+        .neishi2 .span-zhonghong {
+            background-color: #c72319;
+        }
+
+        .neishi2 .span-lanbai {
+            background-color: #306add;
+        }
+
+        .neishi2 .span-huise {
+            background-color: #9c9899;
+        }
+
+        .neishi2 .span-zongse {
+            background-color: #786567;
+        }
+
+        .neishi2 .span-huangzong {
+            background-color: #b48c80;
+        }
+
+        .wai-color-select, .nei-color-select {
+            padding-left: 10px;
+        }
+
+        .neishi .active, .neishi2 .active {
+            border: 4px solid #ff4400 !important;
+        }
+    </style>
+    <!-- 电话弹层 begin -->
+    <div class="M_pop_tel" id="">
+
+        <ul class="list M_br12">
+
+        </ul>
+
+        <a href="javascript:hidePhone();" class="close M_br12">取消</a>
+
+    </div>
+
+
+    <div class="M_pop_tel2" id="">
+
+        <div class="select_wai">
+            <p class="select-span">外观: <span class="wai-color-select">白色</span></p>
+            <div class="neishi">
+                <ul>
+                    <li><span data-color="白色" class="span-bai active"></span></li>
+                    <li><span data-color="银色" class="span-yin"></span></li>
+                    <li><span data-color="黑色" class="span-hei"></span></li>
+                    <li><span data-color="灰色" class="span-hui"></span></li>
+                    <li><span data-color="红色" class="span-hong"></span></li>
+                    <li><span data-color="蓝色" class="span-lan"></span></li>
+                    <!--<li><span class="span-jin"></span></li>-->
+                    <li><span data-color="棕色" class="span-zong"></span></li>
+                    <!--<li><span class="span-lv"></span></li>-->
+                    <!--<li><span class="span-huang"></span></li>-->
+                    <li><span data-color="橙色" class="span-cheng"></span></li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="select_nei">
+            <p class="select-span">内饰: <span class="nei-color-select">米黑色</span></p>
+            <div class="neishi2">
+                <ul>
+                    <li><span data-color="米色" class="span-mihei active"></span></li>
+                    <li><span data-color="红色" class="span-zhonghong"></span></li>
+                    <!--<li><span data-color="蓝白" class="span-lanbai"></span></li>-->
+                    <li><span data-color="灰色" class="span-huise"></span></li>
+                    <li><span data-color="棕色" class="span-zongse"></span></li>
+                    <li><span data-color="黄棕色" class="span-huangzong"></span></li>
+                    <li><span data-color="黑色" class="span-hei"></span></li>
+                </ul>
+            </div>
+        </div>
+
+        <a href="javascript:closeMpop();" class="close M_br12">确定</a>
+
+    </div>
+    <div class="M_pop-bg"></div>
+
+
+</div>
+
+
+<script src="__STATIC__/index_files/TouchSlide.1.0.js"></script>
+<script src="__STATIC__/index_files/carPrice.js"></script>
+
+<script type="text/javascript">
+    TouchSlide({
+        slideCell: "#tabBox",
+        endFun: function (i) { //高度自适应
+            var bd = document.getElementById("tabBox-bd");
+            bd.parentNode.style.height = bd.children[i].children[0].offsetHeight + "px";
+            if (i > 0) bd.parentNode.style.transition = "200ms";//添加动画效果
+        }
+    });
+
+    //TouchSlide( {
+    //		slideCell:"#priceBox",
+    //		endFun:function(i){ //高度自适应
+    //			var bd = document.getElementById("priceBox-bd");
+    //			bd.parentNode.style.height = bd.children[i].children[0].offsetHeight+"px";
+    //			if(i>0)bd.parentNode.style.transition="200ms";//添加动画效果
+    //		}
+    //	});
+
+
+    (function ($, doc) {
+        $.init();
+        $.ready(function () {
+            //普通示例
+            var userPicker = new $.PopPicker();
+            userPicker.setData([{
+                value: '1',
+                text: '一次性'
+            }, {
+                value: '2',
+                text: '0首付'
+            }, {
+                value: '3',
+                text: '1成首付'
+            }, {
+                value: '4',
+                text: '3成首付'
+            }]);
+            var showUserPickerButton = doc.getElementById('showUserPicker');
+            showUserPickerButton.addEventListener('tap', function (event) {
+                userPicker.show(function (items) {
+                    showUserPickerButton.innerText = '付款方式 ：' + items[0].text;
+                    showUserPickerButton.setAttribute("data-pay_type_pick",items[0].text);
+                    //返回 false 可以阻止选择框的关闭
+                    //return false;
+                });
+            }, false);
+
+        });
+    })(mui, document);
+
+    $(function () {
+        $("#showUserPicker3").on("tap", function () {
+            $(".M_pop_tel2").show();
+            $(".M_pop-bg").show();
+        })
+
+        $(".neishi span").on("tap", function () {
+            $(".neishi span").removeClass("active");
+            $(this).addClass("active");
+            var color_select_data = $(this).data("color");
+            $(".wai-color-select").text(color_select_data);
+        })
+
+        $(".neishi2 span").on("tap", function () {
+            $(".neishi2 span").removeClass("active");
+            $(this).addClass("active");
+            var color_select_data = $(this).data("color");
+            $(".nei-color-select").text(color_select_data);
+        })
+
+        $("#run_contact").on("tap", function () {
+            var url = '{:url("wap/index/contact")}?id={$vo.id}';
+            var color = $("#showUserPicker3").data('color_pick');
+            if (color != '') {
+                url = url + "&color=" + color;
+            }
+            var pay_type = $("#showUserPicker").data("pay_type_pick");
+            if (pay_type != '') {
+                url = url + "&pay_type=" + pay_type;
+            }
+            //跳转
+            window.location.href = url;
+        })
+
+    })
+    function closeMpop() {
+        var wai_select = $(".wai-color-select").text();
+        var nei_select = $(".nei-color-select").text();
+        $("#showUserPicker3").text("选择颜色 ：" + wai_select + "/" + nei_select);
+        $("#showUserPicker3").attr("data-color_pick",wai_select + "/" + nei_select);
+        $(".M_pop_tel2").hide();
+        $(".M_pop-bg").hide();
+    }
+
+</script>
+{include file="public/weixin_share" /}
+</body>
+</html>

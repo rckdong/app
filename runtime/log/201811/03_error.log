@@ -1,0 +1,3 @@
+---------------------------------------------------------------
+[ 2018-11-03T10:44:22+08:00 ] 127.0.0.1 GET /index.php/index/index/test
+[ error ] [40164]invalid ip 117.136.31.238, not in whitelist hint: [a78.Za00583055][E:\car_subsystem\vendor\zoujingli\wechat-developer\WeChat\Contracts\Tools.php:177]

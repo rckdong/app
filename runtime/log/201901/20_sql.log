@@ -1,0 +1,258 @@
+---------------------------------------------------------------
+[ 2019-01-20T12:21:58+08:00 ] 127.0.0.1 GET /
+[ sql ] [ DB ] CONNECT:[ UseTime:0.183319s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `product_saled` [ RunTime:0.272837s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `product_saled` WHERE  `is_deleted` = 0 LIMIT 1 [ RunTime:0.081096s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.079528s ]
+[ sql ] [ SQL ] SELECT `name`,`value` FROM `system_config` [ RunTime:0.002155s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `goods` [ RunTime:0.102765s ]
+[ sql ] [ SQL ] SELECT `id`,`goods_title`,`goods_prices`,`goods_logo`,`guid_price`,`goods_tag` FROM `goods` WHERE  `is_deleted` = 0 ORDER BY `sort` LIMIT 10 [ RunTime:0.149114s ]
+[ sql ] [ SQL ] SELECT * FROM `product_saled` ORDER BY id desc LIMIT 10 [ RunTime:0.001331s ]
+---------------------------------------------------------------
+[ 2019-01-20T12:22:05+08:00 ] 127.0.0.1 GET /index.php
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003395s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `product_saled` [ RunTime:0.067134s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `product_saled` WHERE  `is_deleted` = 0 LIMIT 1 [ RunTime:0.001475s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_config` [ RunTime:0.077790s ]
+[ sql ] [ SQL ] SELECT `name`,`value` FROM `system_config` [ RunTime:0.001436s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `goods` [ RunTime:0.084872s ]
+[ sql ] [ SQL ] SELECT `id`,`goods_title`,`goods_prices`,`goods_logo`,`guid_price`,`goods_tag` FROM `goods` WHERE  `is_deleted` = 0 ORDER BY `sort` LIMIT 10 [ RunTime:0.002325s ]
+[ sql ] [ SQL ] SELECT * FROM `product_saled` ORDER BY id desc LIMIT 10 [ RunTime:0.001386s ]
+---------------------------------------------------------------
+[ 2019-01-20T12:22:11+08:00 ] 127.0.0.1 GET /index.php/admin
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003388s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_node` [ RunTime:0.068008s ]
+[ sql ] [ SQL ] SELECT * FROM `system_node` WHERE  `node` = 'admin/index/index' LIMIT 1 [ RunTime:0.017245s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_menu` [ RunTime:0.055302s ]
+[ sql ] [ SQL ] SELECT * FROM `system_menu` WHERE  `status` = 1 ORDER BY sort asc,id asc [ RunTime:0.003003s ]
+[ sql ] [ SQL ] SELECT `node`,`is_menu`,`is_auth`,`is_login`,`title` FROM `system_node` [ RunTime:0.002788s ]
+---------------------------------------------------------------
+[ 2019-01-20T12:58:34+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005838s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.234973s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.061393s ]
+---------------------------------------------------------------
+[ 2019-01-20T12:58:53+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004316s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.077950s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.004294s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:00:19+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.008135s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.171783s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.004099s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:00:58+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.006405s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.094025s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.004919s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:02:12+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003519s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.101412s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.003756s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:05:14+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002802s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.046927s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.003998s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:05:32+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.013568s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.118738s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.004527s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:05:50+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003810s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.099952s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.004828s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:06:01+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003616s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.109408s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.033548s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:08:08+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.011057s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.075046s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.004197s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:08:23+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003335s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.127316s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.013536s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:08:34+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010128s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.059517s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.005133s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:09:02+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003447s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.124265s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.004399s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:09:16+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005180s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.077376s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.012688s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:10:24+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003454s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.048980s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.006789s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:10:35+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003547s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.077446s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.008244s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:11:10+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003726s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.119589s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.005083s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:13:32+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.006591s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.068307s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.005441s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:13:46+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004893s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.126458s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.012249s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:14:07+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010030s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.098122s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.007346s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:16:59+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003946s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.117011s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.003787s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:18:16+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010499s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.073940s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.005791s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:20:42+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.009390s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.111699s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.003664s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:21:07+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.016674s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.095727s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.004101s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:23:04+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005552s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.098814s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.005133s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:24:32+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005572s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.086772s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.023939s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:26:55+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004252s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.090832s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.003785s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:27:38+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.006150s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.075122s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.004881s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:29:43+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.007426s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.066641s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.005933s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:29:53+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.006216s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.110299s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.003951s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:30:14+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004597s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.123040s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.004017s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:33:56+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003451s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.110091s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.003988s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:34:28+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002852s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.099924s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.003705s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:34:50+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002472s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.061962s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.003956s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:35:04+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002349s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.062005s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.003838s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:35:15+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005098s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.097455s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.004075s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:39:37+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.013343s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.077095s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.003776s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:45:57+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.006431s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.089411s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.004883s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:46:49+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005547s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.120534s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.004874s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:47:10+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.006303s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.074737s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.006279s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:47:38+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.018288s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.076482s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.003700s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:47:45+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002425s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.061934s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.003993s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:47:56+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.009802s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.070775s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.006125s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:49:59+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002959s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.085867s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.003938s ]
+---------------------------------------------------------------
+[ 2019-01-20T13:52:03+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005135s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.169071s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.004274s ]
+---------------------------------------------------------------
+[ 2019-01-20T14:16:02+08:00 ] 127.0.0.1 GET /index.php/index/word/create_word?contract_id=49
+[ sql ] [ DB ] CONNECT:[ UseTime:0.012971s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.095052s ]
+[ sql ] [ SQL ] SELECT `c`.*,system_user.name as saler_name,store.name as store_name,store.phone as store_phone,store.address as store_address FROM `contacts` `c` LEFT JOIN `system_user` ON `system_user`.`id`=`c`.`saler_id` LEFT JOIN `store` ON `store`.`id`=`c`.`store_id` WHERE  `c`.`id` = '49' LIMIT 1 [ RunTime:0.009954s ]

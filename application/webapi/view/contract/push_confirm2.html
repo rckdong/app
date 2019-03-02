@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>合同确认</title>
+    {include file="public/header" /}
+</head>
+
+
+<body>
+
+<script type="text/javascript">!function (a) {
+    function b() {
+        var b = g.getBoundingClientRect().width;
+        b / c > 640 && (b = 640 * c), a.rem = b / 16, g.style.fontSize = a.rem + "px"
+    }
+
+    var c, d, e, f = a.document, g = f.documentElement, h = f.querySelector('meta[name="viewport"]'),
+        i = f.querySelector('meta[name="flexible"]');
+    if (h) {
+        console.warn("将根据已有的meta标签来设置缩放比例");
+        var j = h.getAttribute("content").match(/initial-scale=(["']?)([d.]+)1?/);
+        j && (d = parseFloat(j[2]), c = parseInt(1 / d))
+    } else if (i) {
+        var j = i.getAttribute("content").match(/initial-dpr=(["']?)([d.]+)1?/);
+        j && (c = parseFloat(j[2]), d = parseFloat((1 / c).toFixed(2)))
+    }
+    if (!c && !d) {
+        var k = (a.navigator.appVersion.match(/android/gi), a.navigator.appVersion.match(/iphone/gi)),
+            c = a.devicePixelRatio;
+        c = k ? c >= 3 ? 3 : c >= 2 ? 2 : 1 : 1, d = 1 / c
+    }
+    if (g.setAttribute("data-dpr", c), !h) if (h = f.createElement("meta"), h.setAttribute("name", "viewport"), h.setAttribute("content", "initial-scale=" + d + ", maximum-scale=" + d + ", minimum-scale=" + d + ", user-scalable=no"), g.firstElementChild) g.firstElementChild.appendChild(h); else {
+        var l = f.createElement("div");
+        l.appendChild(h), f.write(l.innerHTML)
+    }
+    a.dpr = c, a.addEventListener("resize", function () {
+        clearTimeout(e), e = setTimeout(b, 300)
+    }, !1), a.addEventListener("pageshow", function (a) {
+        a.persisted && (clearTimeout(e), e = setTimeout(b, 300))
+    }, !1), "complete" === f.readyState ? f.body.style.fontSize = 12 * c + "px" : f.addEventListener("DOMContentLoaded", function () {
+            f.body.setAttribute('fontSize', 12 * c + "px")
+        }, !1), b()
+}(window);
+/*app body*/
+(function (b) {
+    var a = b.body;
+    var e = navigator.userAgent;
+    /in_app_not_header/i.test(e) && (a.className += " app-body-no-header");
+    /in_app_not_footer/i.test(e) && (a.className += " app-body-no-footer");
+
+    function d() {
+        var g = location.search;
+        var f = new Object();
+        if (g.indexOf("?") != -1) {
+            var j = g.substr(1);
+            strs = j.split("&");
+            for (var h = 0; h < strs.length; h++) {
+                f[strs[h].split("=")[0]] = (strs[h].split("=")[1])
+            }
+        }
+        return f
+    }
+
+    var c = d();
+    if (c.APP_NAME && c.APP_NAME == "MLL_ADMIN") {
+        a.className += " app-body-no-toolbar"
+    }
+})(document);</script>
+
+<script type="text/javascript">
+    window._gaq = window._gaq || [];
+    window._ana = window._ana || [];
+    _ana.baseTime = new Date().getTime();
+    window.$$ = window.$$ || {};
+    $$.__IMG = 'http://img002.mllres.com' || 'http://image.meilele.com';
+    window._onReadyList = window._onReadyList || [];
+    window._$_ = function (id) {
+        return document.getElementById(id)
+    };
+</script>
+
+
+<style>
+    .mui-collapse-content p {
+        line-height: 1.2rem;
+    }
+
+    .show-contract {
+        width: 100%;
+        line-height: 3.0rem;
+        overflow: hidden;
+        margin-top: 20px;
+        padding-top: 5px;
+        background-color: rgb(244, 244, 244);
+        text-align: center;
+    }
+
+    .item_image {
+        position: relative;
+        width: 200px;
+        margin: 0 auto;
+    }
+
+    .item_image p {
+        position: absolute;
+        top: 72px;
+        left: 72px;
+        font-weight: bolder;
+        color: #9ea4b5;
+    }
+
+    .show-contract img {
+        width: 100%;
+    }
+
+    .list-badge {
+        width: 5px;
+        display: inline-block;
+        background-color: #75d0ff;
+        height: 12px;
+        margin-right: 5px;
+    }
+
+    div.filter_bg {
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        position: fixed;
+        top: 0;
+        z-index: 100;
+        display: none;
+    }
+
+    div.conDialog {
+        position: fixed;
+        width: 86%;
+        height: 420px;
+        top: 14%;
+        z-index: 9999;
+        left: 7%;
+        background: #FFF;
+        background-size: 100%;
+        border-radius: 10px;
+        border-radius: 20px;
+        overflow: hidden;
+        display: none;
+    }
+
+
+    p.tit {
+        text-align: center;
+        background-color: #242736;
+        height: 40px;
+        margin-top: 0px;
+        color: #FFF;
+        line-height: 40px;
+        font-size: 14px;
+    }
+
+
+    div.mzCon {
+        line-height: 1.5;
+        font-size: 12px;
+        padding: 8px; height: 70%;
+        overflow: hidden;
+    }
+    .test{
+        width: 98%;
+        height: 370px;
+        overflow: auto;
+        margin: 5px;
+    }
+    .scrollbar{
+        width: 90%;
+        height: 360px;
+        margin: 0 auto;
+    }
+
+
+    .test-1::-webkit-scrollbar {/*滚动条整体样式*/
+        width: 5px;     /*高宽分别对应横竖滚动条的尺寸*/
+        height: 1px;
+    }
+    .test-1::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+        border-radius: 5px;
+        -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        background: #535353;
+    }
+    .test-1::-webkit-scrollbar-track {/*滚动条里面轨道*/
+        -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+        border-radius: 5px;
+        background: #EDEDED;
+    }
+
+    .scrollbar b.f{
+        color: #cf5012;
+    }
+    .scrollbar span.vis{
+        visibility: hidden;
+    }
+    .scrollbar span.fl{
+        margin-left:1px;
+    }
+
+
+    button.poss {
+        position: absolute;
+        bottom: 10px;
+        margin: 0 auto;
+        width: 40%;
+        left: 9%;
+    }
+    button.upload_cancle {
+        background: #404040;
+        border: 1px solid #404040;
+        position: absolute;
+        bottom: 10px;
+        margin: 0 auto;
+        width: 40%;
+        right: 9%;
+    }
+</style>
+
+<div class="filter_bg"></div>
+
+<div id="conDialog" class="conDialog">
+    <p class="tit">合同条款确认</p>
+    <div class="mzCon">
+        <div class="test test-1">
+            <div class="scrollbar" id="article_con_show">
+                {$info.remarks}
+            </div>
+        </div>
+    </div>
+    <button id="confirm_update_button" type="button" class="mui-btn mui-disabled mui-btn-primary poss" onclick="checkForm(this);">同意&nbsp;(<b id="after_timer">10</b>)&nbsp;</button>
+    <button id="update_cancle" type="button" class="mui-btn mui-btn-primary upload_cancle" >不同意</button>
+</div>
+
+
+<div class="mui-content" style="max-width: 100%;margin: 0 auto; background: none;margin-top: 22px;">
+
+    <div class="mui-content-padded">
+        <h5 style="font-weight: bolder">合同类型：{if condition="$info.contract_type eq 2"}订车合同{else}定车合同{/if}</h5>
+    </div>
+
+    <div class="mui-card">
+        <div class="mui-card-content">
+            <ul class="mui-table-view">
+                <li class="mui-table-view-cell mui-collapse mui-active">
+                    <a class="mui-navigate-right" href="#"><span class="list-badge"></span>个人信息</a>
+                    <div class="mui-collapse-content">
+                        <p style="margin-bottom:0 !important">姓名：{$info.nickname}</p>
+                        <p style="margin-bottom:0 !important">手机号码：{$info.phone}</p>
+                        <p style="margin-bottom:0 !important">证件号码：{$info.identify}</p>
+                        <p style="margin-bottom:0 !important">收件地址：{$info.address}</p>
+                        <p style="margin-bottom:0 !important">紧急联系人：{$info.emergency_contact}</p>
+                        <p style="margin-bottom:0 !important">电话：{$info.emergency_phone}</p>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#"><span class="list-badge"></span>车辆信息</a>
+                    <div class="mui-collapse-content">
+                        <p style="margin-bottom:0 !important">版本类型：{if condition="$info.car_type ==
+                            0"}中规车{else}平行进口车{/if}</p>
+                        <p style="margin-bottom:0 !important">品牌：{$info.brand_name}</p>
+                        <p style="margin-bottom:0 !important">车型：{$info.car_model}</p>
+                        <p style="margin-bottom:0 !important">颜色：{$info.car_color}</p>
+                        <p style="margin-bottom:0 !important">选装：{$info.car_selection}</p>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse ">
+                    <a class="mui-navigate-right" href="#"><span class="list-badge"></span>购买方式</a>
+                    <div class="mui-collapse-content">
+                        <p style="margin-bottom:0 !important">是否分期：{if condition="$info.buy_type ==
+                            0"}一次性购买{else}分期购买{/if}</p>
+                        <p style="margin-bottom:0 !important">购买方式描述：{$info.buy_type_desc}</p>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse ">
+                    <a class="mui-navigate-right" href="#"><span class="list-badge"></span>销售总价</a>
+                    <div class="mui-collapse-content">
+                        {if condition="$info.contract_type eq 2"}
+                        <p style="margin-bottom:0 !important">订金支付：{$info.deposit_price}</p>
+                        {else}
+                        <p style="margin-bottom:0 !important">定金支付：{$info.deposit_price}</p>
+                        {/if}
+                        <p style="margin-bottom:0 !important">全包价格：{$info.transaction_price}</p>
+                    </div>
+                </li>
+                <li class="mui-table-view-cell mui-collapse">
+                    <a class="mui-navigate-right" href="#"><span class="list-badge"></span>代办、精品</a>
+                    <div class="mui-collapse-content">
+                        <p style="margin-bottom:0 !important">保险：
+                            {if count($info['insurance_list']) == 0}
+                            无
+                            {else}
+                            {foreach $info['insurance_list'] as $key => $val}
+                            {$val},
+                            {/foreach}
+                            {/if}
+                        </p>
+                        <p style="margin-bottom:0 !important">精品：
+                            {if count($info['product_list']) == 0}
+                            无
+                            {else}
+                            {foreach $info['product_list'] as $key => $val}
+                            {$val},
+                            {/foreach}
+                            {/if}
+                        </p>
+                        <p style="margin-bottom:0 !important"> 购置税：{if condition="$info.purchase_tax ==
+                            1"}含{else}不含{/if}</p>
+                        <p style="margin-bottom:0 !important"> 上牌地点
+                            ：{if condition="$info.license == ''"}不办理{else}{$info.license}{/if}</p>
+                        <p style="margin-bottom:0 !important"> 运费：{if condition="$info.freight == 1"}含（已购买运输险）{else}不含{/if}</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <style>
+
+        .mui-input-row a {
+            font-family: 'Helvetica Neue', Helvetica, sans-serif;
+            line-height: 1.1;
+            float: left;
+            width: 35%;
+            padding: 11px 15px;
+            /* border: 1px solid red; */
+        }
+
+        .mui-checkbox a{
+            display: inline-block;
+            float: none;
+            width: 100%;
+            padding-right: 58px;
+            margin-left: 25px;
+        }
+
+    </style>
+
+    <form class="mui-input-group">
+
+        <div class="mui-input-row mui-checkbox mui-left">
+            <a href="/static/pdf/contract_{$info.contract_number}.png">《车厘子汽车交付中心合同条款》</a>
+            <input class="checkbox1" name="checkbox1" value="1" type="checkbox" >
+        </div>
+
+        <div class="mui-input-row">
+            <label>反馈内容</label>
+            <input type="text" id="ps_content" name="ps_content" class="mui-input-clear" placeholder="请输入反馈内容">
+        </div>
+        <div class="mui-button-row">
+            <input type="hidden" id="contractId" name="contractId" value="{$info.id}">
+            <button type="button" class="mui-btn mui-btn-primary pass-btn" onclick="javascript:void (0)">确认通过</button>
+            <button type="button" class="mui-btn mui-btn-danger exit-btn" onclick="javascript:void (0)">取消，暂不下单</button>
+        </div>
+    </form>
+</div>
+
+<footer class="mll-footer" style="width: 100%;bottom: 0px;left: 0px;margin-top: 50px;">
+    <div class="mll-footer-icp">版权所有：粤ICP备08008334号</div>
+</footer>
+
+<script>
+    var time_one;
+    $(".pass-btn").click(function () {
+        //同意下单
+        form_submit(1);
+
+
+//        $(".filter_bg").show();
+//        $("#conDialog").show();
+//
+//        if(time_one){
+//            clearTimeout(time_one);
+//        }
+//        var i = 10;
+//        after();
+//        function after(){
+//            if($("#confirm_update_button").hasClass("mui-disabled") != true){
+//                return false;
+//            }
+//            $("#after_timer").empty().append(i);
+//            i=i-1;
+//            time_one = setTimeout(function(){
+//                if(i < 0){
+//                    $("#confirm_update_button").removeClass("mui-disabled");
+//                    clearTimeout(time_one);
+//                    return ;
+//                }
+//                after();
+//            },1000);
+//        }
+    })
+
+    $("#confirm_update_button").click(function () {
+        form_submit(1);
+    })
+
+    $("#update_cancle").click(function () {
+
+        $(".filter_bg").hide();
+        $("#conDialog").hide();
+    })
+
+    $(".exit-btn").click(function () {
+        //不同意，取消
+        form_submit(2)
+    })
+
+    function form_submit(type) {
+        var ps_content = $("#ps_content").val();  //意见建议
+        var contractId = $("#contractId").val();        //合同ID
+        var checkbox1 = $(".checkbox1").prop("checked")
+
+        if (type == 2 && $.trim(ps_content) == '') {
+            mui.toast('请输入反馈内容');
+            return;
+        }
+
+        if(type == 1){
+            if(checkbox1 == false){
+                mui.toast('需同意合同条款');
+                return;
+            }
+        }
+
+        if (type == 1) {
+            $(".pass-btn").text('正在提交....')
+        } else {
+            $(".exit-btn").text('正在提交....')
+        }
+        $(".pass-btn").css({"background": '#404040'});
+        $(".exit-btn").css({"background": '#404040'});
+
+        if ($(".pass-btn").hasClass("mui-disabled")) {
+            return false;
+        }
+
+        $(".pass-btn").addClass("mui-disabled");
+        $(".exit-btn").addClass("mui-disabled");
+
+        var data = {
+            contact_id: contractId,
+            type: type,
+            ps_content: ps_content
+        };
+        var updateForm = "{:url('webapi/contract/do_confirm')}";
+
+        $.post(updateForm, data, function (res) {
+            mui.toast(res.msg);
+            $(".exit-btn").text('取消，暂不下单').css({"background": '#dd524d'});
+            $(".pass-btn").text('确认通过').css({"background": '#3377ff'});
+
+            if (res.status == 200) {
+                var pay_url = "{:url('webapi/user/user_center')}";
+                window.location.href = pay_url;
+            } else {
+                $(".exit-btn").removeClass("mui-disabled");
+                $(".pass-btn").removeClass("mui-disabled");
+            }
+        });
+        return;
+    }
+</script>
+</body>
+</html>

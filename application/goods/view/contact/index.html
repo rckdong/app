@@ -1,0 +1,131 @@
+{extend name='admin@public/content'}
+
+{block name="button"}
+
+<!--{if auth("$classuri/del")}-->
+<button data-update="" data-field='delete' data-action='{:url("$classuri/del")}' class='layui-btn layui-btn-sm layui-btn-danger'>删除</button>
+<!--{/if}-->
+
+{/block}
+
+{block name="content"}
+
+<!-- 表单搜索 开始 -->
+<form class="layui-form layui-form-pane form-search" action="{:request()->url()}" onsubmit="return false" method="get">
+
+    <div class="layui-form-item layui-inline">
+        <label class="layui-form-label">手机号</label>
+        <div class="layui-input-inline">
+            <input name="phone_num" value="{$Think.get.phone_num}" placeholder="请输入手机号" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item layui-inline">
+        <label class="layui-form-label">姓名</label>
+        <div class="layui-input-inline">
+            <input name="name" value="{$Think.get.name}" placeholder="请输入姓名" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item layui-inline">
+        <label class="layui-form-label">是否删除</label>
+        <div class="layui-input-inline">
+            <select name="is_deleted" class="layui-select">
+                <option value="">- 全部 -</option>
+                <!--{foreach [2=>'未删除',1=>'已删除'] as $key=>$sex}-->
+                <!--{if $Think.get.is_deleted eq $key.''}-->
+                <option selected value="{$key}">- {$sex} -</option>
+                <!--{else}-->
+                <option value="{$key}">- {$sex} -</option>
+                <!--{/if}-->
+                <!--{/foreach}-->
+            </select>
+        </div>
+    </div>
+
+    <div class="layui-form-item layui-inline">
+        <label class="layui-form-label">时间</label>
+        <div class="layui-input-inline">
+            <input name="create_at" id="create_at" value="{$Think.get.create_at}" placeholder="请选择时间" class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item layui-inline">
+        <button class="layui-btn layui-btn-primary"><i class="layui-icon">&#xe615;</i> 搜 索</button>
+    </div>
+
+</form>
+
+<script>
+    window.laydate.render({range: true, elem: '#create_at'});
+    window.form.render();
+</script>
+<!-- 表单搜索 结束 -->
+
+<form onsubmit="return false;" data-auto="true" method="post">
+    {if empty($list)}
+    <p class="help-block text-center well">没 有 记 录 哦！</p>
+    {else}
+    <input type="hidden" value="resort" name="action"/>
+    <table class="layui-table" lay-skin="line">
+        <thead>
+        <tr>
+            <th class='list-table-check-td'>
+                <input data-auto-none="none" data-check-target='.list-check-box' type='checkbox'/>
+            </th>
+            <th class='text-left nowrap'>产品名称</th>
+            <th class='text-left nowrap'>原价</th>
+            <th class='text-left nowrap'>支付方式</th>
+            <th class='text-left nowrap'>外观/内饰</th>
+            <th class='text-left nowrap'>客户姓名</th>
+            <th class='text-left nowrap'>客户手机</th>
+            <th class='text-left nowrap'>备注</th>
+            <th class='text-left nowrap'>状态</th>
+            <th class='text-left nowrap'>时间</th>
+            <th class='text-left nowrap'>是否删除</th>
+            <th class='text-left'></th>
+        </tr>
+        </thead>
+        <tbody>
+        {foreach $list as $key=>$vo}
+        <tr>
+            <td class='list-table-check-td'>
+                <input class="list-check-box" value='{$vo.id}' type='checkbox'/>
+            </td>
+            <td class='text-left nowrap'>{$vo.goods_title}</td>
+            <td class='text-left nowrap'>{$vo.goods_prices} 万</td>
+            <td class='text-left nowrap'>{$vo.pay_type}</td>
+            <td class='text-left nowrap'>{$vo.color}</td>
+            <td class='text-left nowrap'>{$vo.name}</td>
+            <td class='text-left nowrap'>{$vo.phone_num}</td>
+            <td class='text-left nowrap'>{$vo.ps}</td>
+            <td class='text-left nowrap'>
+                {if $vo.status eq 0}<span class="color-red">未回复</span>{elseif $vo.status eq 1}<span class="color-green">已回复</span>{/if}
+            </td>
+            <td class='text-left nowrap'>{$vo.create_at|format_datetime}</td>
+
+            <td class='text-left nowrap'>
+                {if $vo.is_deleted eq 0}<span class="color-green">未删除</span>{elseif $vo.is_deleted eq 1}<span class="color-red">已删除</span>{/if}
+            </td>
+
+            <td class='text-left nowrap'>
+
+                {if auth("$classuri/edit")  && $vo.is_deleted eq 0}
+                <span class="text-explode">|</span>
+                <a data-title="编辑回复" data-open='{:url("$classuri/edit")}?id={$vo.id}'>编辑</a>
+                {/if}
+
+                {if auth("$classuri/del") && $vo.is_deleted eq 0}
+                <span class="text-explode">|</span>
+                <a data-update="{$vo.id}" data-field='delete' data-action='{:url("$classuri/del")}'>删除</a>
+                {/if}
+
+            </td>
+        </tr>
+        {/foreach}
+        </tbody>
+    </table>
+    {if isset($page)}<p>{$page|raw}</p>{/if}
+    {/if}
+</form>
+{/block}

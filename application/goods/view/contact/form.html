@@ -1,0 +1,90 @@
+{extend name='admin@public/content'}
+
+{block name="content"}
+<form onsubmit="return false;" action="{:request()->url()}" data-auto="true" method="post" class='form-horizontal layui-form padding-top-20'>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">产品</label>
+        <div class='col-sm-8'>
+            {$vo.goods_title|default=""}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">原价格</label>
+        <div class='col-sm-8'>
+            {$vo.goods_prices|default=""} 万
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">支付方式</label>
+        <div class='col-sm-8'>
+            {$vo.pay_type|default="无"}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">外观/内饰</label>
+        <div class='col-sm-8'>
+            {$vo.color|default="无"}
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">添加备注</label>
+        <div class='col-sm-8'>
+            <textarea placeholder="请输入备注" title="请输入备注" class="layui-textarea" name="ps">{$vo.ps|default=""}</textarea>
+        </div>
+    </div>
+
+
+    <style>
+        .layui-form-radio{display: none}
+    </style>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">是否回复</label>
+        <div class="col-sm-8">
+            <!--{if $vo.status eq 0}-->
+            {foreach ['未回复','已回复'] as $k=>$v}
+            <label class="think-radio">
+                <!--{if $vo.status eq $k}-->
+                <input checked type="radio" value="{$k}" name="status">
+                <!--{else}-->
+                <input type="radio" value="{$k}" name="status">
+                <!--{/if}-->
+                {$v}
+            </label>
+            {/foreach}
+            <!--{else}-->
+            已回复
+            <!--{/if}-->
+
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="col-sm-7 col-sm-offset-2">
+        <div class="layui-form-item text-center">
+            {if !empty($vo.id)}<input type="hidden" name="id" value="{$vo.id}">{/if}
+            <button class="layui-btn" type="submit">保存配置</button>
+            <button class="layui-btn layui-btn-danger" type='button' onclick="window.history.back()">取消编辑</button>
+        </div>
+    </div>
+
+    <script>window.form.render();</script>
+
+    <style>
+        .background-item {
+            padding: 15px;
+            background: #efefef;
+        }
+
+        .background-item thead tr {
+            background: #e0e0e0
+        }
+    </style>
+</form>
+{/block}

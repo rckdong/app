@@ -1,0 +1,26 @@
+---------------------------------------------------------------
+[ 2018-11-21T16:09:53+08:00 ] 127.0.0.1 GET /index.php/webapi/user/user_center
+[ info ] www_car.com/index.php/webapi/user/user_center [运行时间：0.453350s][吞吐率：2.21req/s] [内存消耗：1,509.98kb] [文件加载：73]
+[ info ] [ LANG ] E:\car_subsystem\thinkphp\lang\zh-cn.php
+[ info ] [ ROUTE ] array (
+)
+[ info ] [ HEADER ] array (
+  'accept-language' => 'zh-CN,zh;q=0.9,en;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36',
+  'upgrade-insecure-requests' => '1',
+  'connection' => 'close',
+  'host' => 'www_car.com',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ DB ] INIT mysql
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @action_begin [ RunTime:0.178840s ]
+[ info ] [ VIEW ] E:\car_subsystem/application/webapi\view\user\user_center.html [ array (
+  0 => 'classuri',
+  1 => 'user_info',
+  2 => 'contract_info',
+) ]
+[ info ] [ LOG ] INIT File

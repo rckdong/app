@@ -1,0 +1,7 @@
+---------------------------------------------------------------
+[ 2018-11-17T18:31:18+08:00 ] 127.0.0.1 GET /index.php/webapi/user/gouche.html
+[ sql ] [ DB ] CONNECT:[ UseTime:0.008078s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_node` [ RunTime:0.096939s ]
+[ sql ] [ SQL ] SELECT * FROM `system_node` WHERE  `node` = 'webapi/user/gouche' LIMIT 1 [ RunTime:0.001680s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.120664s ]
+[ sql ] [ SQL ] SELECT `id`,`contract_type`,`contract_number` FROM `contacts` WHERE  `user_id` = 1  AND `is_deleted` = 0 ORDER BY id desc LIMIT 1 [ RunTime:0.001234s ]

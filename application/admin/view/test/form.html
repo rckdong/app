@@ -1,0 +1,192 @@
+<form class="layui-form layui-box modal-form-box" action="{:request()->url()}" data-auto="true" method="post">
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">ID</label>
+        <div class="layui-input-block">
+            <p style="height: 36px;line-height: 36px;"> {$vo.id|default="0"}</p>
+        </div>
+    </div>
+
+    {if isset($vo.type)}
+    <div class="layui-form-item">
+        <label class="layui-form-label">结算方案</label>
+        <div class="layui-input-block">
+            <select name="type">
+                <option value="1" {if $vo.type==1}selected{/if} >一次性付款方案一(0.008___1.5___1000___800___0)</option>
+                <option value="2" {if $vo.type==2}selected{/if} >按揭付款方案二(0.01___1.5___1000___800___300)</option>
+                <option value="3" {if $vo.type==3}selected{/if} >一次性店保付款方案三(0.008___1.2___1000___800___0)</option>
+                <option value="4" {if $vo.type==4}selected{/if} >按揭店保付款方案四(0.01___1.2___1000___800___300)</option>
+                <option value="5" {if $vo.type==5}selected{/if} >4s全包方案5(0.008___1.2___500___0___0)</option>
+                <option value="6" {if $vo.type==6}selected{/if} >无保险(0.02___1.5___500___800___0)</option>
+            </select>
+        </div>
+    </div>
+    {/if}
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">财务总收入</label>
+        <div class="layui-input-block">
+            <input autofocus name="D3" value='{$vo.D3|default=""}' class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">开票价</label>
+        <div class="layui-input-block">
+            <input autofocus name="A4" value='{$vo.A4|default=""}' class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">车辆采购成本</label>
+        <div class="layui-input-block">
+            <input autofocus name="A5" value='{$vo.A5|default=""}' class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">运输成本</label>
+        <div class="layui-input-block">
+            <input autofocus name="A6" value='{$vo.A6|default=""}' class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">购置税成本</label>
+        <div class="layui-input-block">
+            <input autofocus name="A7" value='{$vo.A7|default=""}' class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">商业险5折</label>
+        <div class="layui-input-block">
+            <input autofocus name="A8_1" value='{$vo.A8_1|default=""}' class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">交强/车船</label>
+        <div class="layui-input-block">
+            <input autofocus name="A8_2" value='{$vo.A8_2|default=""}' class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">质保 85折</label>
+        <div class="layui-input-block">
+            <input autofocus name="A8_3" value='{$vo.A8_3|default=""}' class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">店保+12%</label>
+        <div class="layui-input-block">
+            <input autofocus name="A8_4" value='{$vo.A8_4|default=""}' class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">上牌</label>
+        <div class="layui-input-block">
+            <input autofocus name="A9" value='{$vo.A9|default=""}' class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">精品成本</label>
+        <div class="layui-input-block">
+            <input autofocus name="A10" value='{$vo.A10|default=""}' class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">刷卡成本</label>
+        <div class="layui-input-block">
+            <input autofocus name="A11" value='{$vo.A11|default=""}' class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">垫资成本</label>
+        <div class="layui-input-block">
+            <input autofocus name="A14" value='{$vo.A14|default=""}' class="layui-input">
+        </div>
+    </div>
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">其他成本</label>
+        <div class="layui-input-block">
+            <input autofocus name="A15" value='{$vo.A15|default=""}' class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">客户满意度100分</label>
+        <div class="layui-input-block">
+            <input autofocus name="A16" value='{$vo.A16|default=""}' class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">单台成本</label>
+        <div class="layui-input-block">
+            <p style="height: 36px;line-height: 36px;"> {$vo.chengben|default="0"}</p>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">公司毛利润</label>
+        <div class="layui-input-block">
+            <p style="height: 36px;line-height: 36px;"> {$vo.maoli|default="0"}</p>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">公司应收总成本</label>
+        <div class="layui-input-block">
+            <p style="height: 36px;line-height: 36px;"> {$vo.company_chengben|default="0"}</p>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">公司净利润</label>
+        <div class="layui-input-block">
+            <p style="height: 36px;line-height: 36px;"> {$vo.gjlirun|default="0"}</p>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">客户满意度扣分</label>
+        <div class="layui-input-block">
+            <p style="height: 36px;line-height: 36px;"> {$vo.percent_discount|default="0"}</p>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">销售毛利润</label>
+        <div class="layui-input-block">
+            <p style="height: 36px;line-height: 36px;"> {$vo.xslirun|default="0"}</p>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">销售净利润</label>
+        <div class="layui-input-block">
+            <p style="height: 36px;line-height: 36px;"> {$vo.xsjlirun|default="0"}</p>
+        </div>
+    </div>
+
+
+
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="layui-form-item text-center">
+        {if isset($vo['id'])}<input type='hidden' value='{$vo.id}' name='id'>{/if}
+        <button class="layui-btn" type='submit'>保存数据</button>
+        <button class="layui-btn layui-btn-danger" type='button' data-confirm="确定要取消编辑吗？" data-close>取消编辑</button>
+    </div>
+    <script>window.form.render();</script>
+</form>

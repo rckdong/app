@@ -1,0 +1,118 @@
+{extend name="admin@public/content"}
+
+{block name="content"}
+<form onsubmit="return false;" action="{:request()->url()}" data-auto="true" method="post" class='form-horizontal layui-form padding-top-20'>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            CompanyName<br><span class="nowrap color-desc">公司名称</span>
+        </label>
+        <div class='col-sm-8'>
+            <input name="company_name" required="required" title="请输入公司名称" placeholder="请输入公司名称" value="{:sysconf('company_name')}" class="layui-input">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            Address<br><span class="nowrap color-desc">公司地址</span>
+        </label>
+        <div class='col-sm-8'>
+            <input name="company_address" required="required" title="请输入公司地址" placeholder="请输入公司地址" value="{:sysconf('company_address')}" class="layui-input">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            Telephone<br><span class="nowrap color-desc">联系电话</span>
+        </label>
+        <div class='col-sm-8'>
+            <input name="company_phone" required="required" title="请输入联系电话" placeholder="请输入联系电话" value="{:sysconf('company_phone')}" class="layui-input">
+            <p class="help-block">多个电话，用 | 隔开</p>
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            Title<br><span class="nowrap color-desc">手机站 title</span>
+        </label>
+        <div class='col-sm-8'>
+            <input name="wap_title" required="required" title="请输入title" placeholder="请输入title" value="{:sysconf('wap_title')}" class="layui-input">
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            Keywords<br><span class="nowrap color-desc">手机站 keywords</span>
+        </label>
+        <div class='col-sm-8'>
+            <input name="wap_keywords" required="required" title="请输入keywords" placeholder="请输入keywords" value="{:sysconf('wap_keywords')}" class="layui-input">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            Description<br><span class="nowrap color-desc">手机站 wap_description</span>
+        </label>
+        <div class='col-sm-8'>
+            <input name="wap_description" required="required" title="请输入wap_description" placeholder="请输入wap_description" value="{:sysconf('wap_description')}" class="layui-input">
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            Logo<br><span class="nowrap color-desc">图标</span>
+        </label>
+        <div class='col-sm-8'>
+            <img data-tips-image style="height:auto;max-height:32px;min-width:32px" src="{:sysconf('company_image')}"/>
+            <input type="hidden" name="company_image" onchange="$(this).prev('img').attr('src', this.value)" value="{:sysconf('company_image')}" class="layui-input">
+            <a class="btn btn-link" data-file="one" data-uptype="local" data-type="ico,png,jpeg,jpg" data-field="company_image">上传图片</a>
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">
+            AboutUs<br><span class="nowrap color-desc">关于我们</span>
+        </label>
+        <div class="col-md-8">
+            <textarea name='content'></textarea>
+        </div>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="col-sm-4 col-sm-offset-2">
+        <div class="layui-form-item text-center">
+            <button class="layui-btn" type="submit">保存配置</button>
+        </div>
+    </div>
+
+</form>
+
+{/block}
+
+{block name='script'}
+<textarea class="hide" id="contents">{$content.content|default=''|raw}</textarea>
+<script>
+    require(['ckeditor'], function () {
+        var editor;
+        var editDdata = document.getElementById('contents').innerHTML;
+        console.log(editDdata);
+        editor = window.createEditor('[name="content"]');
+        editor.setData(htmldecode(editDdata));
+
+        //html反转义输出
+        function htmldecode(string) {
+            var div = document.createElement('div');
+            div.innerHTML = string;
+            return div.innerText || div.textContent;
+        }
+    });
+</script>
+{/block}

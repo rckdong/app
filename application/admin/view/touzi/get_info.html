@@ -1,0 +1,181 @@
+<form class="layui-form layui-box modal-form-box" action="{:request()->url()}" data-auto="true" method="post">
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">合同编号</label>
+        <div class="layui-input-block">
+            <p style="height: 36px;line-height: 36px;"> {$contract_info.contract_number|default="0"}</p>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">车辆</label>
+        <div class="layui-input-block">
+            <p style="height: 36px;line-height: 36px;"> {$contract_info.brand_name|default="0"}   {$contract_info.car_model|default="0"}  {$contract_info.car_color|default="0"}</p>
+        </div>
+    </div>
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">结算方案</label>
+        <div class="layui-input-block">
+            <p style="height: 36px;line-height: 36px;"> {$info.type_name|default="一次性付款方案一"}</p>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">销售结算价格</label>
+        <div class="layui-input-block">
+            <input autofocus name="D3" value='{$info.total_income|default=""}' class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">开票价</label>
+        <div class="layui-input-block">
+            <input autofocus name="A4" value='{$info.ticket_price|default=""}' class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">车辆采购成本</label>
+        <div class="layui-input-block">
+            <input autofocus name="A5" value='{$info.purchasing_cost|default=""}' class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">运输成本</label>
+        <div class="layui-input-block">
+            <input autofocus name="A6" value='{$info.transportation_cost|default=""}' class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">购置税成本</label>
+        <div class="layui-input-block">
+            <input autofocus name="A7" value='{$info.purchase_tax_cost|default=""}' class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">商业险5折</label>
+        <div class="layui-input-block">
+            <input autofocus name="A8_1" value='{$info.commercial_insurance|default=""}' class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">交强/车船</label>
+        <div class="layui-input-block">
+            <input autofocus name="A8_2" value='{$info.compulsory_insurance|default=""}' class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">质保 85折</label>
+        <div class="layui-input-block">
+            <input autofocus name="A8_3" value='{$info.quality_assurance|default=""}' class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">店保+12%</label>
+        <div class="layui-input-block">
+            <input autofocus name="A8_4" value='{$info.shop_insurance|default=""}' class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">上牌</label>
+        <div class="layui-input-block">
+            <input autofocus name="A9" value='{$info.premium|default=""}' class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">精品成本</label>
+        <div class="layui-input-block">
+            <input autofocus name="A10" value='{$info.quality_cost|default=""}' class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">刷卡成本</label>
+        <div class="layui-input-block">
+            <input autofocus name="A11" value='{$info.card_cost|default=""}' class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">垫资成本</label>
+        <div class="layui-input-block">
+            <input autofocus name="A14" value='{$info.capital_cost|default=""}' class="layui-input">
+        </div>
+    </div>
+
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">其他成本</label>
+        <div class="layui-input-block">
+            <input autofocus name="A15" value='{$info.other_cost|default=""}' class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">客户满意度100分</label>
+        <div class="layui-input-block">
+            <input autofocus name="A16" value='{$info.satisfaction|default=""}' class="layui-input">
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">单台成本</label>
+        <div class="layui-input-block">
+            <p style="height: 36px;line-height: 36px;"> {$info.single_cost|default="0"}</p>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">公司毛利润</label>
+        <div class="layui-input-block">
+            <p style="height: 36px;line-height: 36px;"> {$info.company_gross_profit|default="0"}</p>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">公司应收总成本</label>
+        <div class="layui-input-block">
+            <p style="height: 36px;line-height: 36px;"> {$info.company_cost|default="0"}</p>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">公司净利润</label>
+        <div class="layui-input-block">
+            <p style="height: 36px;line-height: 36px;"> {$info.company_net_profit|default="0"}</p>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">客户满意度扣分</label>
+        <div class="layui-input-block">
+            <p style="height: 36px;line-height: 36px;"> {$info.deduction|default="0"}</p>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">销售毛利润</label>
+        <div class="layui-input-block">
+            <p style="height: 36px;line-height: 36px;"> {$info.sales_gross_profit|default="0"}</p>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <label class="layui-form-label">销售净利润</label>
+        <div class="layui-input-block">
+            <p style="height: 36px;line-height: 36px;"> {$info.sales_net_profit|default="0"}</p>
+        </div>
+    </div>
+
+    <script>window.form.render();</script>
+</form>

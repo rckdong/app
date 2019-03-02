@@ -1,0 +1,90 @@
+{extend name='admin@public/content'}
+
+{block name="content"}
+<form onsubmit="return false;" action="{:request()->url()}" data-auto="true" method="post" class='form-horizontal layui-form padding-top-20'>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">所属部门</label>
+        <div class="col-sm-8">
+            <select style="display: block;" class="layui-select full-width" name="bumen_id">
+                {foreach $bumens as $bumen}
+                <!--{if isset($vo.bumen_id) and $bumen.id eq $vo.bumen_id}-->
+                <option selected value="{$bumen.id}">{$bumen.name}</option>
+                <!--{else}-->
+                <option value="{$bumen.id}">{$bumen.name}</option>
+                <!--{/if}-->
+                {/foreach}
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">岗位名称</label>
+        <div class='col-sm-8'>
+            <input autofocus name="name" value='{$vo.name|default=""}' required="required" title="请输入岗位名称" placeholder="请输入岗位名称" class="layui-input">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">岗位描述</label>
+        <div class='col-sm-8'>
+            <textarea placeholder="请输入岗位描述" title="请输入岗位描述" class="layui-textarea" name="desc">{$vo.desc|default=""}</textarea>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">该组审核领导</label>
+        <div class="col-sm-8">
+            <select style="display: block;" class="layui-select full-width" name="pid">
+                {foreach $users as $user}
+                <!--{if isset($vo.pid) and $user.id eq $vo.pid}-->
+                <option selected value="{$user.id}">{$user.name}</option>
+                <!--{else}-->
+                <option value="{$user.id}">{$user.name}</option>
+                <!--{/if}-->
+                {/foreach}
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">基本绩效</label>
+        <div class='col-sm-8'>
+            <input autofocus name="base_jixiao" value='{$vo.base_jixiao|default=""}' required="required" title="请输入基本绩效" placeholder="请输入基本绩效" class="layui-input">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">交车后提成</label>
+        <div class='col-sm-8'>
+            <input autofocus name="choucheng" value='{$vo.choucheng|default=""}' required="required" title="交车后提成" placeholder="交车后提成" class="layui-input">
+        </div>
+        <p class="help-block">销售填 0 即可</p>
+    </div>
+
+    <div class="hr-line-dashed"></div>
+
+    <div class="col-sm-7 col-sm-offset-2">
+        <div class="layui-form-item text-center">
+            {if !empty($vo.id)}<input type="hidden" name="id" value="{$vo.id}">{/if}
+            <button class="layui-btn" type="submit">保存配置</button>
+            <button class="layui-btn layui-btn-danger" type='button' onclick="window.history.back()">取消编辑</button>
+        </div>
+    </div>
+
+    <script>window.form.render();</script>
+
+    <style>
+        .background-item {
+            padding: 15px;
+            background: #efefef;
+        }
+
+        .background-item thead tr {
+            background: #e0e0e0
+        }
+        .layui-select-title{display: none}
+    </style>
+</form>
+{/block}

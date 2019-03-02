@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>【{$vo.brand_name}_{$vo.car_model}-{$vo.car_color}】- {:sysconf('wap_title')}</title>
+    <meta name="keywords" content="{$vo.car_model}-{$vo.car_color},报价,价格">
+    <meta name="description" content="{$vo.car_model}-{$vo.car_color},报价,价格,{:sysconf('wap_description')}">
+
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta content="no-cache" http-equiv="pragma">
+    <meta content="no-cache" http-equiv="cache-control">
+    <link href="__STATIC__/index_files/cheshangle.css" rel="stylesheet" type="text/css">
+    <link href="__STATIC__/index_files/cheoo.css" rel="stylesheet" type="text/css">
+
+    <script src="__STATIC__/index_files/jquery-1.8.3.min.js"></script>
+    <script src="__STATIC__/index_files/cheshangle.js"></script>
+    <script src="__STATIC__/index_files/shencong.js"></script>
+    {include file="public/baidu_hm" /}
+    <style>
+        .alpha {
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .alpha body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .img_box{
+            position: relative;
+        }
+        .img_icon{
+            position: absolute;
+            width: 80px !important;
+            height: 80px !important;
+            z-index: 1000;
+            top: 10px;
+            right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+<div class="M_scrollHidden">
+
+    <!-- 头部 begin -->
+    <header class="M_header">
+
+        <a href="javascript:history.back();" class="left"><i class="M_icon M_icon_arrow-lw"></i></a>
+
+        <a href="javascript:void(0)" class="right" id="M_more"><i class="M_icon M_icon_nav"></i></a>
+
+        <div class="title"><i class="M_icon M_icon_logo"></i>{$vo.car_model}-{$vo.car_color} <em class="pageState"><span>1</span>/0</em></div>
+
+    </header>
+
+    <!-- 导航 begin -->
+    <div class="M_header_nav" id="M_header_nav">
+
+        <ul>
+            <li><a href="{:url('wap/index/index')}">首页</a></li>
+            <li><a href="/index.php/wap/index/get_list">全部车型</a></li>
+            <li><a href="/index.php/wap/index/has_sale">已售车型</a></li>
+            <li><a href="{:url('wap/index/about')}">关于我们</a></li>
+        </ul>
+    </div>
+    <div class="M_main M_h">
+
+        <!-- 图片列表 begin -->
+        <div class="M_main_con M_h">
+
+            <div class="M_pic_con" id="slideBox">
+
+                <div class="M_pic_info">
+
+                        <ul>
+                            {if $vo.ahead_image != ''}<li class="img_box"><img src="{$vo.ahead_image}" alt=""><img class="img_icon" src="http://chexinyuan.com/static/images/yishou.png"></li>{/if}
+                            {if $vo.side_image != ''}<li class="img_box"><img src="{$vo.side_image}" alt=""><img class="img_icon" src="http://chexinyuan.com/static/images/yishou.png"></li>{/if}
+                            {if $vo.back_image != ''}<li class="img_box"><img src="{$vo.back_image}" alt=""><img class="img_icon" src="http://chexinyuan.com/static/images/yishou.png"></li>{/if}
+                            {if $vo.inside_image_one != ''}<li class="img_box"><img src="{$vo.inside_image_one}" alt=""><img class="img_icon" src="http://chexinyuan.com/static/images/yishou.png"></li>{/if}
+                            {if $vo.inside_image_two != ''}<li class="img_box"><img src="{$vo.inside_image_two}" alt=""><img class="img_icon" src="http://chexinyuan.com/static/images/yishou.png"></li>{/if}
+                        </ul>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<script src="__STATIC__/index_files/TouchSlide.1.0.js"></script>
+<script type="text/javascript">
+    TouchSlide({
+        slideCell: "#slideBox",
+        mainCell: ".M_pic_info ul",
+        effect: "leftLoop",
+        autoPage: false,
+        pageStateCell: ".pageState",
+        interTime: 4500
+    });
+</script>
+{include file="public/weixin_share" /}
+</body>
+</html>

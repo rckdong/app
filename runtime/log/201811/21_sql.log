@@ -1,0 +1,9 @@
+---------------------------------------------------------------
+[ 2018-11-21T16:09:53+08:00 ] 127.0.0.1 GET /index.php/webapi/user/user_center
+[ sql ] [ DB ] CONNECT:[ UseTime:0.006587s ] mysql:host=127.0.0.1;port=3306;dbname=admin_v3;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `system_node` [ RunTime:0.075292s ]
+[ sql ] [ SQL ] SELECT * FROM `system_node` WHERE  `node` = 'webapi/user/user_center' LIMIT 1 [ RunTime:0.024035s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `app_users` [ RunTime:0.045004s ]
+[ sql ] [ SQL ] SELECT * FROM `app_users` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001569s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `contacts` [ RunTime:0.049394s ]
+[ sql ] [ SQL ] SELECT `id`,`car_model`,`transaction_price` FROM `contacts` WHERE  `user_id` = 1  AND `is_deleted` = 0 ORDER BY id desc LIMIT 1 [ RunTime:0.001131s ]
